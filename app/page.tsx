@@ -82,13 +82,13 @@ export default async function IndexPage({
       </div>
       <div>
         <section>
-          <div className="flex-row flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-100 mr-4 grid place-items-center text-center">
+          <div className="flex flex-row items-center">
+            <div className="mr-4 grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-center">
               1
             </div>
             <h2 className="font-semibold">Enter your current handle</h2>
           </div>
-          <div className="ml-4 border-l border-l-1 pl-8 py-6">
+          <div className="border-l-1 ml-4 border-l py-6 pl-8">
             <form>
               <div className="grid w-full max-w-sm items-center gap-1.5">
                 <div className="flex w-full max-w-sm items-center space-x-2">
@@ -107,14 +107,14 @@ export default async function IndexPage({
                   Enter your current handle, not including the @
                 </p>
                 {error1 && (
-                  <p className="text-sm text-red-500 flex-row gap-2 flex items-center">
-                    <X className="w-4 h-4" /> Handle not found - please try
+                  <p className="flex flex-row items-center gap-2 text-sm text-red-500">
+                    <X className="h-4 w-4" /> Handle not found - please try
                     again
                   </p>
                 )}
                 {profile && (
                   <>
-                    <p className="text-muted-forground text-sm mt-4 flex-row gap-2 flex items-center">
+                    <p className="text-muted-forground mt-4 flex flex-row items-center gap-2 text-sm">
                       <Check className="h-4 w-4 text-green-500" /> Account found
                     </p>
                     <Profile profile={profile} className="mt-4" />
@@ -125,13 +125,13 @@ export default async function IndexPage({
           </div>
         </section>
         <section className={cn(!profile && "opacity-50")}>
-          <div className="flex-row flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-100 mr-4 grid place-items-center text-center">
+          <div className="flex flex-row items-center">
+            <div className="mr-4 grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-center">
               2
             </div>
             <h2 className="font-semibold">Choose your new handle</h2>
           </div>
-          <div className="ml-4 border-l border-l-1 pl-8 py-6">
+          <div className="border-l-1 ml-4 border-l py-6 pl-8">
             <form>
               <input type="hidden" name="handle" value={handle} />
               <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -166,20 +166,20 @@ export default async function IndexPage({
           </div>
         </section>
         <section className={cn((!newHandle || error2) && "opacity-50")}>
-          <div className="flex-row flex items-center">
-            <div className="w-8 h-8 rounded-full bg-slate-100 mr-4 grid place-items-center text-center">
+          <div className="flex flex-row items-center">
+            <div className="mr-4 grid h-8 w-8 place-items-center rounded-full bg-slate-100 text-center">
               3
             </div>
             <h2 className="font-semibold">
               Change your handle within the Bluesky app
             </h2>
           </div>
-          <div className="ml-4 border-l border-transparent border-l-1 pl-8 py-6">
+          <div className="border-l-1 ml-4 border-l border-transparent py-6 pl-8">
             <p className="max-w-lg text-sm">
-              Go to Settings {">"} Advanced {">"} Change my handle. Select "I
-              have my own domain" and enter{" "}
+              Go to Settings {">"} Advanced {">"} Change my handle. Select
+              &quot;I have my own domain&quot; and enter{" "}
               {newHandle ? `"${newHandle}"` : "your new handle"}. Finally, tap
-              "Verify DNS Record".
+              &quot;Verify DNS Record&quot;.
             </p>
           </div>
         </section>

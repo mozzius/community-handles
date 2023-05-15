@@ -16,14 +16,14 @@ export default async function HandlePage({
       actor: value,
     })
     return (
-      <div className="flex-1 grid place-items-center">
+      <div className="grid flex-1 place-items-center">
         <Profile profile={profile.data} />
       </div>
     )
   } catch (e) {
     console.error(e)
     return (
-      <div className="flex-1 grid place-items-center">
+      <div className="grid flex-1 place-items-center">
         <p className="text-center">Profile not found</p>
       </div>
     )
