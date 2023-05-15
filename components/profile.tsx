@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { AppBskyActorDefs } from "@atproto/api"
 
 import { cn } from "@/lib/utils"
