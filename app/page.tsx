@@ -39,6 +39,7 @@ export default async function IndexPage({
     }
 
     if (newHandle && profile) {
+      newHandle = newHandle.trim().toLowerCase()
       if (!newHandle.includes(".")) {
         newHandle += "." + process.env.DOMAIN
       }
