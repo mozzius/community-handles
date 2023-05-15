@@ -17,7 +17,9 @@ export default async function HandlePage({
     })
     return (
       <div className="grid flex-1 place-items-center">
-        <Profile profile={profile.data} />
+        <a href={`https://staging.bsky.app/profile/${profile.data.handle}`}>
+          <Profile profile={profile.data} />
+        </a>
       </div>
     )
   } catch (e) {
