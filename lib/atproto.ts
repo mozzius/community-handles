@@ -10,7 +10,6 @@ BskyAgent.configure({
           ? httpReqBody
           : JSON.stringify(httpReqBody),
     })
-    console.log(res)
     const status = res.status
     const body = await res.json()
     const headers: Record<string, string> = {}
@@ -32,7 +31,7 @@ const agent = new BskyAgent({
 export const getAgent = async () => {
   if (!agent.hasSession) {
     await agent.login({
-      identifier: "mozzius.dev",
+      identifier: process.env.BSKY_USERNAME!,
       password: process.env.BSKY_PASSWORD!,
     })
   }

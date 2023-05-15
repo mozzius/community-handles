@@ -1,16 +1,35 @@
+import { Metadata } from "next"
 import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
 import { Profile } from "@/components/profile"
 
-export default async function HandlePage({
-  params,
-}: {
+interface Props {
   params: { handle: string }
-}) {
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+  if (!value || typeof value !== "string") {
+    return {
+      title: "Profile not found",
+      description: ":(",
+    }
+  }
+  const agent = await getAgent()
+  const profile = await agent.getProfile({
+    actor: value,
+  })
+  return {
+    title: `${profile.data.displayName} - @${profile.data.handle}`,
+    description: profile.data.description,
+  }
+}
+
+export default async function HandlePage({ params }: Props) {
   try {
     const value = await kv.get(params.handle + "." + process.env.DOMAIN)
-    if (!value || typeof value !== "string") throw new Error("not in kv")
+    if (!value || typeof value !== "string") throw new Error(`not in kv - ${params.handle}`)
     const agent = await getAgent()
     const profile = await agent.getProfile({
       actor: value,
