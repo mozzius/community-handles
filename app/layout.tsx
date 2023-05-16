@@ -9,10 +9,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `${siteConfig.name} - get your community handle for Bluesky`,
-  },
+  title: `${siteConfig.name} - get your community handle for Bluesky`,
   description: siteConfig.description,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
