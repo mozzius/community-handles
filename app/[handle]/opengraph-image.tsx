@@ -62,7 +62,7 @@ export default async function og({ params }: { params: { handle: string } }) {
                 {profile.data.displayName}
               </p>
             )}
-            <p tw="mt-2 mb-0 text-neutral-500 text-2xl w-[500px]">
+            <p tw="m-0 text-neutral-500 text-2xl w-[500px]">
               @{profile.data.handle}
             </p>
           </div>
