@@ -83,7 +83,7 @@ export default async function IndexPage({
       </div>
       <div>
         <section>
-          <div className="flex flex-row items-center">
+          <div className="flex h-8 flex-row items-center">
             <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
               1
             </div>
@@ -126,7 +126,7 @@ export default async function IndexPage({
           </div>
         </section>
         <section className={cn(!profile && "opacity-50")}>
-          <div className="flex flex-row items-center">
+          <div className="flex h-8 flex-row items-center">
             <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
               2
             </div>
@@ -167,7 +167,7 @@ export default async function IndexPage({
           </div>
         </section>
         <section className={cn((!newHandle || error2) && "opacity-50")}>
-          <div className="flex flex-row items-center">
+          <div className="flex h-8 flex-row items-center">
             <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
               3
             </div>
