@@ -11,7 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `${siteConfig.name} - get your community handle for Bluesky`,
   },
   description: siteConfig.description,
   themeColor: [
