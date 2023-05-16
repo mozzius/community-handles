@@ -84,7 +84,7 @@ export default async function IndexPage({
       <div>
         <section>
           <div className="flex h-8 flex-row items-center">
-            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
+            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-800">
               1
             </div>
             <h2 className="font-semibold">Enter your current handle</h2>
@@ -127,7 +127,7 @@ export default async function IndexPage({
         </section>
         <section className={cn(!profile && "opacity-50")}>
           <div className="flex h-8 flex-row items-center">
-            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
+            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-800">
               2
             </div>
             <h2 className="font-semibold">Choose your new handle</h2>
@@ -168,7 +168,7 @@ export default async function IndexPage({
         </section>
         <section className={cn((!newHandle || error2) && "opacity-50")}>
           <div className="flex h-8 flex-row items-center">
-            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-900">
+            <div className="mr-4 grid h-8 w-8 shrink-0 place-items-center rounded-full bg-slate-100 text-center dark:bg-slate-800">
               3
             </div>
             <h2 className="font-semibold">
