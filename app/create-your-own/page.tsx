@@ -2,7 +2,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { Stage } from "@/components/stage"
 
 export const metadata = {
-  title: "Get a Community Handle for your community",
+  title: "Create a Community Handle for your community",
 }
 
 export default function CommunityPage() {
@@ -10,7 +10,7 @@ export default function CommunityPage() {
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Get a Community Handle <br className="hidden sm:inline" />
+          Create a Community Handle <br className="hidden sm:inline" />
           for your community
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
