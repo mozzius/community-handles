@@ -23,9 +23,16 @@ export default function CommunityPage() {
         <Stage title="Buy a domain" number={1}>
           <p className="max-w-lg">
             Buy a domain from a domain registrar. We use{" "}
-            <a href="https://namecheap.com">Namecheap</a>, but it doesn&apos;t
-            matter which one you use. Just make sure you are able to change
-            where you point the nameservers.
+            <a
+              href="https://namecheap.com"
+              className="underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Namecheap
+            </a>
+            , but it doesn&apos;t matter which one you use. Just make sure you
+            are able to change where you point the nameservers.
           </p>
         </Stage>
         <Stage title="Host the Community Handles tool" number={2} last>
