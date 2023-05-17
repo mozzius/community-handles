@@ -41,7 +41,7 @@ export default async function CommunityPage() {
           community
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Want to join the {process.env.DOMAIN} community? Get your own{" "}
+          Want to join the {process.env.DOMAIN} community? Get your own <wbr />
           <Link href="/" className="underline">
             {process.env.DOMAIN} handle
           </Link>
