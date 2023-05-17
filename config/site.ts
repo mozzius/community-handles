@@ -3,7 +3,16 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   name: process.env.DOMAIN ?? "You need to set a DOMAIN env variable",
   description: "get your own bsky.london handle",
-  mainNav: [],
+  mainNav: [
+    {
+      title: "Get your handle",
+      href: "/",
+    },
+    {
+      title: "Community",
+      href: "/community",
+    },
+  ],
   links: {
     github: "https://github.com/mozzius/community-handles",
   },

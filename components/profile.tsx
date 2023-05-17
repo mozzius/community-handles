@@ -17,7 +17,7 @@ export function Profile({ profile, className }: Props) {
         alt="profile picture"
       />
       <div className="flex flex-col">
-        <p className="text-lg font-semibold">{profile.displayName}</p>
+        <p className="text-lg font-semibold leading-5">{profile.displayName}</p>
         <p className="text-sm text-muted-foreground">@{profile.handle}</p>
       </div>
     </div>
