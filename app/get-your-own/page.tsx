@@ -1,9 +1,4 @@
-import Link from "next/link"
-import { kv } from "@vercel/kv"
-
-import { getAgent } from "@/lib/atproto"
 import { buttonVariants } from "@/components/ui/button"
-import { Profile } from "@/components/profile"
 import { Stage } from "@/components/stage"
 
 export const metadata = {
@@ -60,7 +55,10 @@ export default function CommunityPage() {
           </p>
           <p className="mt-4 max-w-lg">
             If you want to host it yourself,{" "}
-            <a href="https://github.com/mozzius/community-handles" className="underline">
+            <a
+              href="https://github.com/mozzius/community-handles"
+              className="underline"
+            >
               fork the project on GitHub
             </a>
             . It{"'"}s a Next.js project, so you can deploy it however you like.
