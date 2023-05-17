@@ -4,6 +4,11 @@ import { kv } from "@vercel/kv"
 import { getAgent } from "@/lib/atproto"
 import { Profile } from "@/components/profile"
 
+export const metadata = {
+  title: `The ${process.env.DOMAIN} Community`,
+  description: `See all the members of the ${process.env.DOMAIN} community.`,
+}
+
 export default async function CommunityPage() {
   const keys = await kv.keys("*")
 
