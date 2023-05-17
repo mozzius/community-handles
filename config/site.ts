@@ -5,12 +5,16 @@ export const siteConfig = {
   description: "get your own bsky.london handle",
   mainNav: [
     {
-      title: "Get your handle",
+      title: "Join the community",
       href: "/",
     },
     {
-      title: "Community",
+      title: "Members",
       href: "/community",
+    },
+    {
+      title: "Get your own community handle tool",
+      href: "/get-your-own",
     },
   ],
   links: {
