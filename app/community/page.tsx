@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default async function CommunityPage() {
-  const keys = await kv.keys("*")
+  const keys = await kv.keys(`*.${process.env.DOMAIN}`)
 
   // split into groups of 25
   const groups = []
