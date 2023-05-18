@@ -2,7 +2,7 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: process.env.DOMAIN ?? "You need to set a DOMAIN env variable",
-  description: "get your own bsky.london handle",
+  description: `get your own ${process.env.DOMAIN} handle`,
   mainNav: [
     {
       title: "Join the community",
