@@ -52,7 +52,7 @@ export default async function CommunityPage() {
             .filter((member) => !!member)
             .map((member) => (
               <a
-                href={`https://staging.bsky.app/profile/${member.handle}`}
+                href={`https://bsky.app/profile/${member.handle}`}
                 key={member.did}
               >
                 <Profile profile={member} />

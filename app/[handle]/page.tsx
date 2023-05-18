@@ -36,7 +36,7 @@ export default async function HandlePage({ params }: Props) {
     })
     return (
       <div className="grid flex-1 place-items-center">
-        <a href={`https://staging.bsky.app/profile/${profile.data.handle}`}>
+        <a href={`https://bsky.app/profile/${profile.data.handle}`}>
           <Profile profile={profile.data} />
         </a>
       </div>
