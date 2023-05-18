@@ -1,13 +1,16 @@
+import { use } from "react"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { LocaleContext } from "@/app/_i18n/context"
 
 import { MainNav } from "./main-nav"
 
 export function SiteHeader() {
+  const locale = use(LocaleContext)
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">

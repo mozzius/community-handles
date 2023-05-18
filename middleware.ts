@@ -1,14 +1,28 @@
 import { NextResponse, type NextRequest } from "next/server"
+import Negotiator from "negotiator"
 
 const domain = process.env.DOMAIN as string
 
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
 
+  let response: NextResponse = NextResponse.next()
+
   if (url.hostname !== domain) {
     const subdomain = url.hostname.slice(0, -domain.length - 1)
-    return NextResponse.rewrite(new URL(`/${subdomain}${url.pathname}`, url))
+    response = NextResponse.rewrite(
+      new URL(`/${subdomain}${url.pathname}`, url)
+    )
   }
+
+  if (!request.cookies.has("lang")) {
+    const language = new Negotiator({
+      headers: Object.fromEntries(request.headers.entries()),
+    }).language(["en", "pt"])
+    request.cookies.set("lang", language ?? "en")
+  }
+
+  return response
 }
 
 export const config = {
