@@ -24,10 +24,12 @@ model Domain {
 model User {
   id       String @id @default(uuid())
   did      String
-  handle   String @unique
+  handle   String
   domainId String
   domain   Domain @relation(fields: [domainId], references: [id])
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@unique([handle, domainId])
 }

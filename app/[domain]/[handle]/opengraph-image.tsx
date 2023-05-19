@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { ImageResponse } from "next/server"
-import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
 
@@ -17,18 +16,16 @@ export default async function og({
 }: {
   params: { domain: string; handle: string }
 }) {
-  const value = await kv.get(params.handle + "." + params.domain)
-
-  if (!value || typeof value !== "string") {
-    return {
-      title: "Profile not found",
-      description: ":(",
-    }
-  }
+  const { domain, handle } = params
+  
+  const res = await fetch(
+    `https://${handle}.${domain}/xrpc/com.atproto.identity.resolveHandle`
+  )
+  const { did } = await res.json()
 
   const agent = await getAgent()
   const profile = await agent.getProfile({
-    actor: value,
+    actor: did,
   })
 
   const fetchAvatar = profile.data.avatar

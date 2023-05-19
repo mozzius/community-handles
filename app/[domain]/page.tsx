@@ -3,6 +3,7 @@ import { kv } from "@vercel/kv"
 import { Check, X } from "lucide-react"
 
 import { getAgent } from "@/lib/atproto"
+import { prisma } from "@/lib/db"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Profile } from "@/components/profile"
@@ -63,13 +64,28 @@ export default async function IndexPage({
         )
         if (validHandle) {
           try {
-            const existing = await kv.get(newHandle)
-            if (existing) {
-              if (existing !== profile.did) {
+            const handle = newHandle.replace(`.${domain}`, "")
+            const existing = await prisma.user.findFirst({
+              where: { handle },
+              include: { domain: true },
+            })
+            if (existing && existing.domain.name === domain) {
+              if (existing.did !== profile.did) {
                 error2 = "handle taken"
               }
             } else {
-              await kv.set(newHandle, profile.did)
+              await prisma.user.create({
+                data: {
+                  handle,
+                  did: profile.did,
+                  domain: {
+                    connectOrCreate: {
+                      where: { name: domain },
+                      create: { name: domain },
+                    },
+                  },
+                },
+              })
             }
           } catch (e) {
             console.error(e)
@@ -137,6 +153,7 @@ export default async function IndexPage({
                   type="text"
                   name="new-handle"
                   placeholder={`example.${domain}`}
+                  defaultValue={newHandle}
                 />
                 <Button type="submit">Submit</Button>
               </div>
