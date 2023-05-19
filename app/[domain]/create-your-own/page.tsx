@@ -53,7 +53,7 @@ export default function CommunityPage() {
           <Dialog>
             <DialogTrigger asChild>
               <Button size="lg" className="mt-6">
-                Use our hosted solution - £5/month
+                Use our hosted solution - £3/month
               </Button>
             </DialogTrigger>
             <DialogContent>
