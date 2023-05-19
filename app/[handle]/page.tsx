@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { cookies } from "next/headers"
 import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
@@ -9,7 +10,9 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+  const domain = cookies().get("domain")?.value
+  if (!domain) throw new Error("no domain cookie")
+  const value = await kv.get(params.handle + "." + domain)
   if (!value || typeof value !== "string") {
     return {
       title: "Profile not found",
@@ -27,9 +30,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function HandlePage({ params }: Props) {
+  const domain = cookies().get("domain")?.value
+  if (!domain) throw new Error("no domain cookie")
+
   try {
-    const value = await kv.get(params.handle + "." + process.env.DOMAIN)
-    if (!value || typeof value !== "string") throw new Error(`not in kv - ${params.handle}`)
+    const value = await kv.get(params.handle + "." + domain)
+    if (!value || typeof value !== "string")
+      throw new Error(`not in kv - ${params.handle}`)
     const agent = await getAgent()
     const profile = await agent.getProfile({
       actor: value,

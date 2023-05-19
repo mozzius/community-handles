@@ -5,11 +5,23 @@ import { getDomain } from "./lib/utils"
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
 
-  const domain = getDomain(request)
+  const { domain, subdomain } = getDomain(url.hostname)
 
-  if (url.hostname !== domain) {
-    const subdomain = url.hostname.slice(0, -domain.length - 1)
-    return NextResponse.rewrite(new URL(`/${subdomain}${url.pathname}`, url))
+  if (domain) {
+    if (subdomain) {
+      const response = NextResponse.rewrite(
+        new URL(`/${subdomain}${url.pathname}`, url)
+      )
+
+      response.cookies.set("domain", domain)
+      return response
+    }
+
+    const response = NextResponse.next()
+    response.cookies.set("domain", domain)
+    return response
+  } else {
+    console.warn(`No domain found for ${url.hostname}`)
   }
 }
 

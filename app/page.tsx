@@ -1,3 +1,4 @@
+import { cookies } from "next/headers"
 import { AppBskyActorDefs } from "@atproto/api"
 import { kv } from "@vercel/kv"
 import { Check, X } from "lucide-react"
@@ -22,6 +23,10 @@ export default async function IndexPage({
   let error1: string | undefined
   let error2: string | undefined
 
+  const domain = cookies().get("domain")?.value
+
+  if (!domain) throw new Error("no domain cookie")
+
   if (handle) {
     try {
       const agent = await getAgent()
@@ -41,12 +46,12 @@ export default async function IndexPage({
     if (newHandle && profile) {
       newHandle = newHandle.trim().toLowerCase()
       if (!newHandle.includes(".")) {
-        newHandle += "." + process.env.DOMAIN
+        newHandle += "." + domain
       }
       if (!error1) {
-        // regex: (alphanumeric, -, _).(process.env.DOMAIN)
+        // regex: (alphanumeric, -, _).(domain)
         const validHandle = newHandle.match(
-          new RegExp(`^[a-zA-Z0-9-_]+.${process.env.DOMAIN}$`)
+          new RegExp(`^[a-zA-Z0-9-_]+.${domain}$`)
         )
         if (validHandle) {
           try {
@@ -73,12 +78,11 @@ export default async function IndexPage({
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Get your own {process.env.DOMAIN} <br className="hidden sm:inline" />
+          Get your own {domain} <br className="hidden sm:inline" />
           handle for Bluesky
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Follow the instructions below to get your own {process.env.DOMAIN}{" "}
-          handle
+          Follow the instructions below to get your own {domain} handle
         </p>
       </div>
       <div>
@@ -124,13 +128,13 @@ export default async function IndexPage({
                 <Input
                   type="text"
                   name="new-handle"
-                  placeholder={`example.${process.env.DOMAIN}`}
+                  placeholder={`example.${domain}`}
                 />
                 <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-muted-foreground ">
-                Enter the {process.env.DOMAIN} handle that you would like to
-                have, not including the @
+                Enter the {domain} handle that you would like to have, not
+                including the @
               </p>
               {error2 && (
                 <p className="text-sm text-red-500">

@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 import { type NavItem } from "@/types/nav"
@@ -9,6 +8,7 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { Link } from "@/components/link"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 interface Props {

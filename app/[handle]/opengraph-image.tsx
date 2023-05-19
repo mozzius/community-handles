@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+
+import { cookies } from "next/headers"
 import { ImageResponse } from "next/server"
 import { kv } from "@vercel/kv"
 
@@ -12,13 +14,18 @@ export const contentType = "image/png"
 export const runtime = "edge"
 
 export default async function og({ params }: { params: { handle: string } }) {
-  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+  const domain = cookies().get("domain")?.value
+  if (!domain) throw new Error("no domain cookie")
+
+  const value = await kv.get(params.handle + "." + domain)
+
   if (!value || typeof value !== "string") {
     return {
       title: "Profile not found",
       description: ":(",
     }
   }
+
   const agent = await getAgent()
   const profile = await agent.getProfile({
     actor: value,
