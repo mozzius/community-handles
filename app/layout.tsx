@@ -18,8 +18,6 @@ export const metadata = {
   },
 }
 
-export const runtime = "edge"
-
 interface RootLayoutProps {
   children: React.ReactNode
 }
