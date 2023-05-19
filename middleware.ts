@@ -5,6 +5,8 @@ import { getDomain } from "./lib/utils"
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
 
+  console.log(getDomain(url.hostname))
+
   const { domain, subdomain } = getDomain(url.hostname)
 
   if (domain) {
