@@ -1,7 +1,7 @@
 import { Metadata } from "next"
-import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
+import { prisma } from "@/lib/db"
 import { Profile } from "@/components/profile"
 
 interface Props {
@@ -10,8 +10,10 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const domain = params.domain
-  const value = await kv.get(params.handle + "." + domain)
-  if (!value || typeof value !== "string") {
+  const user = await prisma.user.findFirst({
+    where: { handle: params.handle, domain: { name: domain } },
+  })
+  if (!user) {
     return {
       title: "Profile not found",
       description: ":(",
@@ -19,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const agent = await getAgent()
   const profile = await agent.getProfile({
-    actor: value,
+    actor: user.did,
   })
   return {
     title: `${profile.data.displayName} - @${profile.data.handle}`,
@@ -28,15 +30,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function HandlePage({ params }: Props) {
-  const domain = params.domain
+  const { domain, handle } = params
 
   try {
-    const value = await kv.get(params.handle + "." + domain)
-    if (!value || typeof value !== "string")
-      throw new Error(`not in kv - ${params.handle}`)
+    const user = await prisma.user.findFirstOrThrow({
+      where: { handle, domain: { name: domain } },
+    })
     const agent = await getAgent()
     const profile = await agent.getProfile({
-      actor: value,
+      actor: user.did,
     })
     return (
       <div className="grid flex-1 place-items-center">

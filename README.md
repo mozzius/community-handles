@@ -49,9 +49,23 @@ Once it's done, go to Settings > Domains and add the domain you want to use. **D
 
 You'll then want to add a wildcard domain using a `*`, such as `*.bsky.london`. This catches all the requests to subdomains - we use Next.js middleware to route them to the right place.
 
-### 4. Set up Vercel KV
+### 4. Add your database
 
-Finally, go to the Storage tab and add Vercel KV. The default settings are fine, use the `KV` prefix. This project's usage will almost certainly fall within the hobby tier, so it's free.
+You'll need to add a database to store the community handles. We recommend using [Neon](https://neon.tech), but you can use whatever you want - if it's not Postgres, you'll likely need to modify the Prisma file. Vercel Postgres will likely be the simply way to set it up. You'll need to add the connection strings to the environment variables.
+
+```env
+DATABASE_URL=
+DIRECT_URL=
+```
+
+> If your database provider does not give you a direct URL, you can remove it from the `schema.prisma` file.
+
+Then run the following commands in your terminal, in the project directory:
+
+```bash
+pnpm i
+pnpm prisma db push
+```
 
 ### 5. Done!
 
