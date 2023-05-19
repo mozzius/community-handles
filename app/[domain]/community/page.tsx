@@ -64,17 +64,27 @@ export default async function CommunityPage({ params }: Props) {
           .
         </p>
         <Tabs defaultValue="domain" className="mt-8">
-          <TabsList className="mb-4">
+          <TabsList>
             <TabsTrigger value="domain">{domain.name} handles</TabsTrigger>
             <TabsTrigger value="all">all</TabsTrigger>
           </TabsList>
-          <TabsContent
-            value="domain"
-            className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
-          >
-            {members
-              .filter((member) => member.handle.endsWith(domain.name))
-              .map((member) => (
+          <TabsContent value="domain">
+            <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {members
+                .filter((member) => member.handle.endsWith(domain.name))
+                .map((member) => (
+                  <a
+                    href={`https://bsky.app/profile/${member.handle}`}
+                    key={member.did}
+                  >
+                    <Profile profile={member} />
+                  </a>
+                ))}
+            </div>
+          </TabsContent>
+          <TabsContent value="all">
+            <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {members.map((member) => (
                 <a
                   href={`https://bsky.app/profile/${member.handle}`}
                   key={member.did}
@@ -82,19 +92,7 @@ export default async function CommunityPage({ params }: Props) {
                   <Profile profile={member} />
                 </a>
               ))}
-          </TabsContent>
-          <TabsContent
-            value="all"
-            className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
-          >
-            {members.map((member) => (
-              <a
-                href={`https://bsky.app/profile/${member.handle}`}
-                key={member.did}
-              >
-                <Profile profile={member} />
-              </a>
-            ))}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
