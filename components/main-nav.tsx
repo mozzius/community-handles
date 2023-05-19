@@ -1,24 +1,21 @@
 import * as React from "react"
-import { cookies } from "next/headers"
 
 import { NavItem } from "@/types/nav"
-import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Link } from "@/components/link"
 
 interface MainNavProps {
+  title: string
   items?: NavItem[]
 }
 
-export function MainNav({ items }: MainNavProps) {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
+export function MainNav({ title, items }: MainNavProps) {
   return (
     <div className="flex gap-6 lg:gap-10">
       <Link href="/" className="flex items-center space-x-2">
         <Icons.logo className="h-6 w-6" />
-        <span className="inline-block font-bold">{domain}</span>
+        <span className="inline-block font-bold">{title}</span>
       </Link>
       {items?.length ? (
         <nav className="hidden gap-4 md:flex lg:gap-6">

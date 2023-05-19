@@ -1,17 +1,15 @@
 import { Metadata } from "next"
-import { cookies } from "next/headers"
 import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
 import { Profile } from "@/components/profile"
 
 interface Props {
-  params: { handle: string }
+  params: { handle: string; domain: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
+  const domain = params.domain
   const value = await kv.get(params.handle + "." + domain)
   if (!value || typeof value !== "string") {
     return {
@@ -30,8 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function HandlePage({ params }: Props) {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
+  const domain = params.domain
 
   try {
     const value = await kv.get(params.handle + "." + domain)

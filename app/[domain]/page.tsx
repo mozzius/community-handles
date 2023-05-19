@@ -1,4 +1,3 @@
-import { cookies } from "next/headers"
 import { AppBskyActorDefs } from "@atproto/api"
 import { kv } from "@vercel/kv"
 import { Check, X } from "lucide-react"
@@ -10,22 +9,23 @@ import { Profile } from "@/components/profile"
 import { Stage } from "@/components/stage"
 
 export default async function IndexPage({
+  params,
   searchParams,
 }: {
+  params: {
+    domain: string
+  }
   searchParams: {
     handle?: string
     "new-handle"?: string
   }
 }) {
+  const domain = params.domain
   let handle = searchParams.handle
   let newHandle = searchParams["new-handle"]
   let profile: AppBskyActorDefs.ProfileView | undefined
   let error1: string | undefined
   let error2: string | undefined
-
-  const domain = cookies().get("domain")?.value
-
-  if (!domain) throw new Error("no domain cookie")
 
   if (handle) {
     try {

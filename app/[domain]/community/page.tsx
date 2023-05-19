@@ -1,23 +1,24 @@
 import { type Metadata } from "next"
-import { cookies } from "next/headers"
 import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
 import { Link } from "@/components/link"
 import { Profile } from "@/components/profile"
 
-export async function generateMetadata(): Promise<Metadata> {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
+interface Props {
+  params: { domain: string }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const domain = params.domain
 
   return {
     title: `The ${domain} Community`,
     description: `See all the members of the ${domain} community.`,
   }
 }
-export default async function CommunityPage() {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
+export default async function CommunityPage({ params }: Props) {
+  const domain = params.domain
 
   const keys = await kv.keys(`*.${domain}`)
 
@@ -40,7 +41,9 @@ export default async function CommunityPage() {
         return profiles.data.profiles
       })
     )
-  ).flat()
+  )
+    .flat()
+    .filter((member) => !!member)
 
   return (
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -57,17 +60,25 @@ export default async function CommunityPage() {
           .
         </p>
         <div className="mt-8 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          {members
-            .filter((member) => !!member)
-            .map((member) => (
-              <a
-                href={`https://bsky.app/profile/${member.handle}`}
-                key={member.did}
-              >
-                <Profile profile={member} />
-              </a>
-            ))}
+          {members.map((member) => (
+            <a
+              href={`https://bsky.app/profile/${member.handle}`}
+              key={member.did}
+            >
+              <Profile profile={member} />
+            </a>
+          ))}
         </div>
+        {/* <Tabs defaultValue="domain">
+          <TabsList>
+            <TabsTrigger value="domain">{domain}</TabsTrigger>
+            <TabsTrigger value="all">all</TabsTrigger>
+          </TabsList>
+          <TabsContent value="domain">
+          </TabsContent>
+          <TabsContent value="all">
+          </TabsContent>
+        </Tabs> */}
       </div>
     </main>
   )

@@ -11,21 +11,12 @@ export function middleware(request: NextRequest) {
 
   if (domain) {
     if (subdomain) {
-      const response = NextResponse.rewrite(
-        new URL(`/${subdomain}${url.pathname}`, url)
+      return NextResponse.rewrite(
+        new URL(`/${domain}/${subdomain}${url.pathname}`, url)
       )
-
-      response.cookies.delete("domain")
-      response.cookies.set("domain", domain)
-      return response
+    } else {
+      return NextResponse.rewrite(new URL(`/${domain}${url.pathname}`, url))
     }
-
-    const response = NextResponse.next()
-    response.cookies.delete("domain")
-    response.cookies.set("domain", domain)
-    return response
-  } else {
-    console.warn(`No domain found for ${url.hostname}`)
   }
 }
 
@@ -36,8 +27,8 @@ export const config = {
      * 1. /api routes
      * 2. /_next (Next.js internals)
      * 3. all root files inside /public (e.g. /favicon.ico)
-     * 4. opengraph images (e.g. /[a-z0-9-_]/opengraph-image)
+     * 4. opengraph images (e.g. /[a-z0-9-_.]/[a-z0-9-_]/opengraph-image)
      */
-    "/((?!api/|_next/|_static/|[\\w-]+\\.\\w+|[a-zA-Z0-9-_]+/opengraph-image).*)",
+    "/((?!api/|_next/|_static/|[\\w-]+\\.\\w+|[a-zA-Z0-9-_.]+/[a-zA-Z0-9-_]+/opengraph-image).*)",
   ],
 }

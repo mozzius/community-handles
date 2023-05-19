@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { cookies } from "next/headers"
 import { ImageResponse } from "next/server"
 import { kv } from "@vercel/kv"
 
@@ -13,11 +12,12 @@ export const size = {
 export const contentType = "image/png"
 export const runtime = "edge"
 
-export default async function og({ params }: { params: { handle: string } }) {
-  const domain = cookies().get("domain")?.value
-  if (!domain) throw new Error("no domain cookie")
-
-  const value = await kv.get(params.handle + "." + domain)
+export default async function og({
+  params,
+}: {
+  params: { domain: string; handle: string }
+}) {
+  const value = await kv.get(params.handle + "." + params.domain)
 
   if (!value || typeof value !== "string") {
     return {
