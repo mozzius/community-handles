@@ -1,9 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server"
 
-const domain = process.env.DOMAIN as string
+import { getDomain } from "./lib/utils"
 
 export function middleware(request: NextRequest) {
   const url = new URL(request.url)
+
+  const domain = getDomain(request)
 
   if (url.hostname !== domain) {
     const subdomain = url.hostname.slice(0, -domain.length - 1)

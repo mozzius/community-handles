@@ -3,7 +3,6 @@ import { kv } from "@vercel/kv"
 import { Check, X } from "lucide-react"
 
 import { getAgent } from "@/lib/atproto"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Profile } from "@/components/profile"
