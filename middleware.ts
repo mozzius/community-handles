@@ -10,12 +10,14 @@ export function middleware(request: NextRequest) {
   const { domain, subdomain } = getDomain(url.hostname)
 
   if (domain) {
-    if (subdomain) {
+    if (subdomain && subdomain !== process.env.LANDING_SUBDOMAIN) {
       return NextResponse.rewrite(
-        new URL(`/${domain}/${subdomain}${url.pathname}`, url)
+        new URL(`/${domain}/${subdomain}${url.pathname}${url.search}`, url)
       )
     } else {
-      return NextResponse.rewrite(new URL(`/${domain}${url.pathname}`, url))
+      return NextResponse.rewrite(
+        new URL(`/${domain}${url.pathname}${url.search}`, url)
+      )
     }
   }
 }
