@@ -1,8 +1,18 @@
-import { buttonVariants } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+
+import { Button, buttonVariants } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { Stage } from "@/components/stage"
 
 export const metadata = {
   title: "Create a Community Handle for your community",
+  description: "Host your own tool or use our hosted solution",
 }
 
 export default function CommunityPage() {
@@ -40,19 +50,72 @@ export default function CommunityPage() {
             You then need to host the tool. You have two options - either use
             our hosted version, or host it yourself.
           </p>
-          <a
-            href="https://buy.stripe.com/eVa6oX7cnbePaMo288"
-            className={buttonVariants({ size: "lg", className: "mt-6" })}
-          >
-            Use our hosted solution - £10/year
-          </a>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg" className="mt-6">
+                Use our hosted solution - £5/month
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Choose a plan</DialogTitle>
+              </DialogHeader>
+              <div className="flex w-full flex-col gap-6 sm:flex-row">
+                <div className="flex flex-1 flex-col items-stretch justify-between gap-6 rounded border p-4 transition-shadow hover:shadow-lg sm:min-h-[16rem]">
+                  <div className="cursor-default">
+                    <h2 className="font-bold">Monthly Plan</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      <span className="text-4xl font-bold text-foreground">
+                        £5
+                      </span>
+                      /month
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Cancel anytime
+                    </p>
+                  </div>
+                  <a
+                    href="https://buy.stripe.com/14k8x5gMXgz91bO3cd"
+                    className={buttonVariants({
+                      variant: "outline",
+                      className: "justify-between",
+                    })}
+                  >
+                    Buy now
+                    <ArrowRight className="ml-1" size={16} />
+                  </a>
+                </div>
+                <div className="flex flex-1 flex-col items-stretch justify-between gap-6 rounded border p-4 transition-shadow hover:shadow-lg md:min-h-[16rem]">
+                  <div className="cursor-default">
+                    <h2 className="font-bold">Yearly Plan</h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      <span className="text-4xl font-bold text-foreground">
+                        £50
+                      </span>
+                      /year
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Cancel anytime
+                    </p>
+                  </div>
+                  <a
+                    href="https://buy.stripe.com/eVa6oX7cnbePaMo288"
+                    className={buttonVariants({ className: "justify-between" })}
+                  >
+                    Buy now
+                    <ArrowRight className="ml-1" size={16} />
+                  </a>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
           <p className="mt-2 max-w-lg text-sm text-muted-foreground">
             Already a customer?{" "}
             <a
               href="https://billing.stripe.com/p/login/6oEbJccQOh2Rdji4gg"
               className="underline"
             >
-              See the billing portal
+              Go to the billing portal
             </a>
             .
           </p>

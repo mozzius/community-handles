@@ -8,6 +8,14 @@ import { Input } from "@/components/ui/input"
 import { Profile } from "@/components/profile"
 import { Stage } from "@/components/stage"
 
+export function generateMetadata({ params }: { params: { domain: string } }) {
+  const domain = params.domain
+  return {
+    title: `${domain} - get your community handle for Bluesky`,
+    description: `get your own ${domain} handle`,
+  }
+}
+
 export default async function IndexPage({
   params,
   searchParams,

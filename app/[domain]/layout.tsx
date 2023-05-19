@@ -2,14 +2,6 @@ import { siteConfig } from "@/config/site"
 import { MainNav } from "@/components/main-nav"
 import { SiteHeader } from "@/components/site-header"
 
-export function generateMetadata({ params }: { params: { domain: string } }) {
-  const domain = params.domain
-  return {
-    title: `${domain} - get your community handle for Bluesky`,
-    description: `get your own ${domain} handle`,
-  }
-}
-
 interface Props {
   children: React.ReactNode
   params: { domain: string }
