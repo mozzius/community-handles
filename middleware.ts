@@ -15,11 +15,13 @@ export function middleware(request: NextRequest) {
         new URL(`/${subdomain}${url.pathname}`, url)
       )
 
+      response.cookies.delete("domain")
       response.cookies.set("domain", domain)
       return response
     }
 
     const response = NextResponse.next()
+    response.cookies.delete("domain")
     response.cookies.set("domain", domain)
     return response
   } else {
