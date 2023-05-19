@@ -66,7 +66,7 @@ export default function CommunityPage() {
                     <h2 className="font-bold">Monthly Plan</h2>
                     <p className="mt-2 text-sm text-muted-foreground">
                       <span className="text-4xl font-bold text-foreground">
-                        £5
+                        £3
                       </span>
                       /month
                     </p>
@@ -90,7 +90,7 @@ export default function CommunityPage() {
                     <h2 className="font-bold">Yearly Plan</h2>
                     <p className="mt-2 text-sm text-muted-foreground">
                       <span className="text-4xl font-bold text-foreground">
-                        £50
+                        £30
                       </span>
                       /year
                     </p>
