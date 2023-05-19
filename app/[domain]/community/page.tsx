@@ -63,8 +63,8 @@ export default async function CommunityPage({ params }: Props) {
           </Link>
           .
         </p>
-        <Tabs defaultValue="domain" className="mb-4 mt-8">
-          <TabsList>
+        <Tabs defaultValue="domain" className="mt-8">
+          <TabsList className="mb-4">
             <TabsTrigger value="domain">{domain.name} handles</TabsTrigger>
             <TabsTrigger value="all">all</TabsTrigger>
           </TabsList>
