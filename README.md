@@ -33,13 +33,9 @@ Add the project to Vercel using the "Add New..." button. You will need to link y
 It will detect that it's a Next.js project and set up the build settings for you. That's all fine, but you will need to set up the environment variables.
 
 ```env
-DOMAIN=example.com
-
 BSKY_USERNAME=
 BSKY_PASSWORD=
 ```
-
-`DOMAIN` is the domain you want to use for your community handle tool. For example, if you want to use `https://bsky.london`, you would set `DOMAIN=bsky.london`.
 
 `BSKY_USERNAME` and `BSKY_PASSWORD` are your Bluesky account details. This is used to interact with the Bluesky API to fetch account details. We recommend using your email for `BSKY_USERNAME`, so that it won't break if you change your handle, and an App Password for `BSKY_PASSWORD`.
 
@@ -47,7 +43,7 @@ Once that's done, deploy the app
 
 ### 3. Set up the domain
 
-Once it's done, go to Settings > Domains and add the domain you want to use. Don't do the redirect stuff it recommends, just use the plain domain. It'll give you the nameservers your need to point the domain to - go back to your registrar and do that.
+Once it's done, go to Settings > Domains and add the domain you want to use. **Don't do the redirect stuff it recommends, just use the plain domain. It's the third option on the list**. It'll give you the nameservers your need to point the domain to - go back to your registrar and do that.
 
 > IMPORTANT: Make sure you use nameservers, not DNS records. If you use DNS records, it won't work.
 
