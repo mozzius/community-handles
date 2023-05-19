@@ -62,14 +62,14 @@ export default async function CommunityPage({ params }: Props) {
           </Link>
           .
         </p>
-        <Tabs defaultValue="domain" className="mt-8">
+        <Tabs defaultValue="domain" className="mb-4 mt-8">
           <TabsList>
-            <TabsTrigger value="domain">{domain.name}</TabsTrigger>
+            <TabsTrigger value="domain">{domain.name} handles</TabsTrigger>
             <TabsTrigger value="all">all</TabsTrigger>
           </TabsList>
           <TabsContent
             value="domain"
-            className="mt-4 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
+            className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
           >
             {members
               .filter((member) => member.handle.endsWith(domain.name))
@@ -84,7 +84,7 @@ export default async function CommunityPage({ params }: Props) {
           </TabsContent>
           <TabsContent
             value="all"
-            className="mt-4 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
+            className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3"
           >
             {members.map((member) => (
               <a
