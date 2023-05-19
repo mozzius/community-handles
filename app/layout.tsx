@@ -1,18 +1,12 @@
 import "@/styles/globals.css"
-import { Metadata } from "next"
 import { Analytics } from "@vercel/analytics/react"
 
-import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { MainNav } from "@/components/main-nav"
-import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-export const metadata: Metadata = {
-  title: `${siteConfig.name} - get your community handle for Bluesky`,
-  description: siteConfig.description,
+export const metadata = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
@@ -43,10 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <div className="relative flex min-h-screen flex-col">
-              <SiteHeader items={siteConfig.mainNav}>
-                <MainNav items={siteConfig.mainNav} />
-              </SiteHeader>
-              <div className="flex flex-1 flex-col">{children}</div>
+              {children}
             </div>
             <TailwindIndicator />
           </ThemeProvider>

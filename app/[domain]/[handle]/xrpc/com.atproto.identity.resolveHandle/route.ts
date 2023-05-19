@@ -3,11 +3,11 @@ import { kv } from "@vercel/kv"
 
 export const GET = async (
   _req: NextRequest,
-  { params }: { params: { handle: string } }
+  { params }: { params: { domain: string; handle: string } }
 ) => {
-  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+  const value = await kv.get(params.handle + "." + params.domain)
   if (!value || typeof value !== "string")
-    throw new Error(`not in kv - ${params.handle}`)
+    throw new Error(`not in kv - ${params.handle}.${params.domain}`)
 
   return NextResponse.json({
     did: value,

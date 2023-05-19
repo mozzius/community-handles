@@ -5,11 +5,12 @@ import { getAgent } from "@/lib/atproto"
 import { Profile } from "@/components/profile"
 
 interface Props {
-  params: { handle: string }
+  params: { handle: string; domain: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+  const domain = params.domain
+  const value = await kv.get(params.handle + "." + domain)
   if (!value || typeof value !== "string") {
     return {
       title: "Profile not found",
@@ -27,9 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function HandlePage({ params }: Props) {
+  const domain = params.domain
+
   try {
-    const value = await kv.get(params.handle + "." + process.env.DOMAIN)
-    if (!value || typeof value !== "string") throw new Error(`not in kv - ${params.handle}`)
+    const value = await kv.get(params.handle + "." + domain)
+    if (!value || typeof value !== "string")
+      throw new Error(`not in kv - ${params.handle}`)
     const agent = await getAgent()
     const profile = await agent.getProfile({
       actor: value,

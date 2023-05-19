@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+
 import { ImageResponse } from "next/server"
 import { kv } from "@vercel/kv"
 
@@ -11,14 +12,20 @@ export const size = {
 export const contentType = "image/png"
 export const runtime = "edge"
 
-export default async function og({ params }: { params: { handle: string } }) {
-  const value = await kv.get(params.handle + "." + process.env.DOMAIN)
+export default async function og({
+  params,
+}: {
+  params: { domain: string; handle: string }
+}) {
+  const value = await kv.get(params.handle + "." + params.domain)
+
   if (!value || typeof value !== "string") {
     return {
       title: "Profile not found",
       description: ":(",
     }
   }
+
   const agent = await getAgent()
   const profile = await agent.getProfile({
     actor: value,
