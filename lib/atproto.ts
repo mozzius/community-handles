@@ -24,15 +24,26 @@ BskyAgent.configure({
   },
 })
 
-export const getAgent = async () => {
-  const agent = new BskyAgent({
-    service: "https://bsky.social",
-  })
+const agent = new BskyAgent({
+  service: "https://bsky.social",
+  async persistSession(evt) {
+    switch (evt) {
+      case "expired":
+        await agent.login({
+          identifier: process.env.BSKY_USERNAME!,
+          password: process.env.BSKY_PASSWORD!,
+        })
+    }
+  },
+})
 
-  await agent.login({
-    identifier: process.env.BSKY_USERNAME!,
-    password: process.env.BSKY_PASSWORD!,
-  })
+export const getAgent = async () => {
+  if (!agent.hasSession) {
+    await agent.login({
+      identifier: process.env.BSKY_USERNAME!,
+      password: process.env.BSKY_PASSWORD!,
+    })
+  }
 
   return agent
 }
