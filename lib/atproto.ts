@@ -9,6 +9,7 @@ BskyAgent.configure({
         typeof httpReqBody === "string"
           ? httpReqBody
           : JSON.stringify(httpReqBody),
+      cache: "no-cache",
     })
     const status = res.status
     const body = await res.json()
@@ -24,22 +25,21 @@ BskyAgent.configure({
   },
 })
 
+const agent = new BskyAgent({
+  service: "https://bsky.social",
+  async persistSession(evt) {
+    switch (evt) {
+      case "expired":
+        console.log("Session expired, logging in again...")
+        await agent.login({
+          identifier: process.env.BSKY_USERNAME!,
+          password: process.env.BSKY_PASSWORD!,
+        })
+    }
+  },
+})
+
 export const getAgent = async () => {
-  const agent = new BskyAgent({
-    service: "https://bsky.social",
-    // async persistSession(evt) {
-    //   switch (evt) {
-    //     case "expired":
-    //       await agent.login({
-    //         identifier: process.env.BSKY_USERNAME!,
-    //         password: process.env.BSKY_PASSWORD!,
-    //       })
-    //   }
-    // },
-  })
-
-  console.log("Logging in...")
-
   await agent.login({
     identifier: process.env.BSKY_USERNAME!,
     password: process.env.BSKY_PASSWORD!,
