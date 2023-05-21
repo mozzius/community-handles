@@ -24,17 +24,15 @@ BskyAgent.configure({
   },
 })
 
-const agent = new BskyAgent({
-  service: "https://bsky.social",
-})
-
 export const getAgent = async () => {
-  if (!agent.hasSession) {
-    await agent.login({
-      identifier: process.env.BSKY_USERNAME!,
-      password: process.env.BSKY_PASSWORD!,
-    })
-  }
+  const agent = new BskyAgent({
+    service: "https://bsky.social",
+  })
+
+  await agent.login({
+    identifier: process.env.BSKY_USERNAME!,
+    password: process.env.BSKY_PASSWORD!,
+  })
 
   return agent
 }
