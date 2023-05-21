@@ -42,6 +42,7 @@ export default async function IndexPage({
       if (!handle.includes(".")) {
         handle += ".bsky.social"
       }
+      console.log("fetching profile", handle)
       const actor = await agent.getProfile({
         actor: handle,
       })
