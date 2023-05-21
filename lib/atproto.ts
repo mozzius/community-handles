@@ -38,6 +38,8 @@ export const getAgent = async () => {
     // },
   })
 
+  console.log("Logging in...")
+
   await agent.login({
     identifier: process.env.BSKY_USERNAME!,
     password: process.env.BSKY_PASSWORD!,
