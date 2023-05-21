@@ -43,5 +43,7 @@ export const getAgent = async () => {
     password: process.env.BSKY_PASSWORD!,
   })
 
+  if (!agent.hasSession) throw new Error("Failed to login")
+
   return agent
 }
