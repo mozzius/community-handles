@@ -114,6 +114,9 @@ export default async function IndexPage({
           <form>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <div className="flex w-full max-w-sm items-center space-x-2">
+                {newHandle && (
+                  <input type="hidden" name="new-handle" value="" />
+                )}
                 <Input
                   type="text"
                   name="handle"
@@ -121,7 +124,10 @@ export default async function IndexPage({
                   defaultValue={handle}
                   required
                 />
-                <Button type="submit" disabled={!!profile}>
+                <Button
+                  type="submit"
+                  disabled={!!profile && profile.handle === handle}
+                >
                   Submit
                 </Button>
               </div>
