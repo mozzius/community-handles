@@ -124,12 +124,7 @@ export default async function IndexPage({
                   defaultValue={handle}
                   required
                 />
-                <Button
-                  type="submit"
-                  disabled={!!profile && profile.handle === handle}
-                >
-                  Submit
-                </Button>
+                <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-muted-foreground">
                 Enter your current handle, not including the @
