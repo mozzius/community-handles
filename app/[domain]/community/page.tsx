@@ -1,5 +1,4 @@
 import { type Metadata } from "next"
-import { kv } from "@vercel/kv"
 
 import { getAgent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
