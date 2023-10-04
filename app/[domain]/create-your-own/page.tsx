@@ -12,7 +12,7 @@ import { Stage } from "@/components/stage"
 
 export const metadata = {
   title: "Create a Community Handle for your community",
-  description: "Host your own tool or use our hosted solution",
+  description: "Host your own tool",
 }
 
 export default function CommunityPage() {
@@ -47,81 +47,7 @@ export default function CommunityPage() {
         </Stage>
         <Stage title="Host the Community Handles tool" number={2} last>
           <p className="max-w-lg">
-            You then need to host the tool. You have two options - either use
-            our hosted version, or host it yourself.
-          </p>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" className="mt-6">
-                Use our hosted solution - £3/month
-              </Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Choose a plan</DialogTitle>
-              </DialogHeader>
-              <div className="flex w-full flex-col gap-6 sm:flex-row">
-                <div className="flex flex-1 flex-col items-stretch justify-between gap-6 rounded border p-4 transition-shadow hover:shadow-lg sm:min-h-[16rem]">
-                  <div className="cursor-default">
-                    <h2 className="font-bold">Monthly Plan</h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      <span className="text-4xl font-bold text-foreground">
-                        £3
-                      </span>
-                      /month
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Cancel anytime
-                    </p>
-                  </div>
-                  <a
-                    href="https://buy.stripe.com/14k8x5gMXgz91bO3cd"
-                    className={buttonVariants({
-                      variant: "outline",
-                      className: "justify-between",
-                    })}
-                  >
-                    Buy now
-                    <ArrowRight className="ml-1" size={16} />
-                  </a>
-                </div>
-                <div className="flex flex-1 flex-col items-stretch justify-between gap-6 rounded border p-4 transition-shadow hover:shadow-lg md:min-h-[16rem]">
-                  <div className="cursor-default">
-                    <h2 className="font-bold">Yearly Plan</h2>
-                    <p className="mt-2 text-sm text-muted-foreground">
-                      <span className="text-4xl font-bold text-foreground">
-                        £30
-                      </span>
-                      /year
-                    </p>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Cancel anytime
-                    </p>
-                  </div>
-                  <a
-                    href="https://buy.stripe.com/eVa6oX7cnbePaMo288"
-                    className={buttonVariants({ className: "justify-between" })}
-                  >
-                    Buy now
-                    <ArrowRight className="ml-1" size={16} />
-                  </a>
-                </div>
-              </div>
-            </DialogContent>
-          </Dialog>
-          <p className="mt-2 max-w-lg text-sm text-muted-foreground">
-            Already a customer?{" "}
-            <a
-              href="https://billing.stripe.com/p/login/6oEbJccQOh2Rdji4gg"
-              className="underline"
-            >
-              Go to the billing portal
-            </a>
-            .
-          </p>
-          <p className="mt-6 max-w-lg">
-            If you use our hosted version, we&apos;ll work with you to point the
-            nameservers at the right place, then take care of everything else.
+            You then need to host the tool.
           </p>
           <p className="mt-4 max-w-lg">
             If you want to host it yourself,{" "}
@@ -134,6 +60,16 @@ export default function CommunityPage() {
             . It{"'"}s a Next.js project, so you can deploy it however you like.
             Check out the README for the recommended solution, using Vercel and
             Vercel KV.
+          </p>
+          <p className="mt-8 max-w-lg text-sm text-muted-foreground">
+            Using the hosted version? (no longer available){" "}
+            <a
+              href="https://billing.stripe.com/p/login/6oEbJccQOh2Rdji4gg"
+              className="underline"
+            >
+              Go to the billing portal
+            </a>
+            .
           </p>
         </Stage>
       </div>
