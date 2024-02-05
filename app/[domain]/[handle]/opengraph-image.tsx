@@ -2,7 +2,7 @@
 
 import { ImageResponse } from "next/server"
 
-import { getAgent } from "@/lib/atproto"
+import { agent } from "@/lib/atproto"
 
 export const size = {
   width: 800,
@@ -17,13 +17,11 @@ export default async function og({
   params: { domain: string; handle: string }
 }) {
   const { domain, handle } = params
-  
-  const res = await fetch(
-    `https://${handle}.${domain}/xrpc/com.atproto.identity.resolveHandle`
-  )
-  const { did } = await res.json()
 
-  const agent = await getAgent()
+  const {
+    data: { did },
+  } = await agent.resolveHandle({ handle: `${handle}.${domain}` })
+
   const profile = await agent.getProfile({
     actor: did,
   })

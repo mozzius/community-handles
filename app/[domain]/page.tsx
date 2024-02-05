@@ -1,8 +1,7 @@
 import { AppBskyActorDefs } from "@atproto/api"
-import { kv } from "@vercel/kv"
 import { Check, X } from "lucide-react"
 
-import { getAgent } from "@/lib/atproto"
+import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
 import { hasExplicitSlur } from "@/lib/slurs"
 import { Button } from "@/components/ui/button"
@@ -39,7 +38,6 @@ export default async function IndexPage({
 
   if (handle) {
     try {
-      const agent = await getAgent()
       if (!handle.includes(".")) {
         handle += ".bsky.social"
       }

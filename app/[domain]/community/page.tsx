@@ -1,6 +1,6 @@
 import { type Metadata } from "next"
 
-import { getAgent } from "@/lib/atproto"
+import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Link } from "@/components/link"
@@ -30,8 +30,6 @@ export default async function CommunityPage({ params }: Props) {
     const group = domain.users.slice(i, i + 25)
     groups.push(group)
   }
-
-  const agent = await getAgent()
 
   // fetch all members
   const members = (

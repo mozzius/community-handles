@@ -1,51 +1,43 @@
-import { BskyAgent } from "@atproto/api"
+import { BskyAgent, jsonToLex, stringifyLex } from "@atproto/api"
 
 BskyAgent.configure({
-  fetch: async (httpUri, httpMethod, httpHeaders, httpReqBody) => {
-    const res = await fetch(httpUri, {
-      method: httpMethod.toUpperCase(),
-      headers: new Headers(httpHeaders),
-      body:
-        typeof httpReqBody === "string"
-          ? httpReqBody
-          : JSON.stringify(httpReqBody),
+  fetch: async (reqUri, reqMethod, reqHeaders, reqBody) => {
+    const reqMimeType = reqHeaders["Content-Type"] || reqHeaders["content-type"]
+    if (reqMimeType && reqMimeType.startsWith("application/json")) {
+      reqBody = stringifyLex(reqBody)
+    }
+    const res = await fetch(reqUri, {
+      method: reqMethod,
+      headers: reqHeaders,
+      body: reqBody,
       cache: "no-cache",
     })
-    const status = res.status
-    const body = await res.json()
-    const headers: Record<string, string> = {}
-    res.headers.forEach((value, key) => {
-      headers[key] = value
+
+    const resStatus = res.status
+    const resHeaders: Record<string, string> = {}
+    res.headers.forEach((value: string, key: string) => {
+      resHeaders[key] = value
     })
+    const resMimeType = resHeaders["Content-Type"] || resHeaders["content-type"]
+    let resBody
+    if (resMimeType) {
+      if (resMimeType.startsWith("application/json")) {
+        resBody = jsonToLex(await res.json())
+      } else if (resMimeType.startsWith("text/")) {
+        resBody = await res.text()
+      } else {
+        throw new Error("TODO: non-textual response body")
+      }
+    }
+
     return {
-      body,
-      headers,
-      status,
+      status: resStatus,
+      headers: resHeaders,
+      body: resBody,
     }
   },
 })
 
-const agent = new BskyAgent({
-  service: "https://bsky.social",
-  async persistSession(evt) {
-    switch (evt) {
-      case "expired":
-        console.log("Session expired, logging in again...")
-        await agent.login({
-          identifier: process.env.BSKY_USERNAME!,
-          password: process.env.BSKY_PASSWORD!,
-        })
-    }
-  },
+export const agent = new BskyAgent({
+  service: "https://api.bsky.app",
 })
-
-export const getAgent = async () => {
-  await agent.login({
-    identifier: process.env.BSKY_USERNAME!,
-    password: process.env.BSKY_PASSWORD!,
-  })
-
-  if (!agent.hasSession) throw new Error("Failed to login")
-
-  return agent
-}

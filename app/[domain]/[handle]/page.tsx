@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 
-import { getAgent } from "@/lib/atproto"
+import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
 import { Profile } from "@/components/profile"
 
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: ":(",
     }
   }
-  const agent = await getAgent()
+
   const profile = await agent.getProfile({
     actor: user.did,
   })
@@ -36,7 +36,7 @@ export default async function HandlePage({ params }: Props) {
     const user = await prisma.user.findFirstOrThrow({
       where: { handle, domain: { name: domain } },
     })
-    const agent = await getAgent()
+
     const profile = await agent.getProfile({
       actor: user.did,
     })
