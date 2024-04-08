@@ -31,6 +31,8 @@ export default async function CommunityPage({ params }: Props) {
     groups.push(group)
   }
 
+  const unique = new Set()
+
   // fetch all members
   const members = (
     await Promise.all(
@@ -44,6 +46,13 @@ export default async function CommunityPage({ params }: Props) {
   )
     .flat()
     .filter((member) => !!member)
+    .filter(({ did }) => {
+      if (unique.has(did)) {
+        return false
+      }
+      unique.add(did)
+      return true
+    })
 
   return (
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
