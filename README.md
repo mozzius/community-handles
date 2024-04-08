@@ -32,13 +32,6 @@ Add the project to Vercel using the "Add New..." button. You will need to link y
 
 It will detect that it's a Next.js project and set up the build settings for you. That's all fine, but you will need to set up the environment variables.
 
-```env
-BSKY_USERNAME=
-BSKY_PASSWORD=
-```
-
-`BSKY_USERNAME` and `BSKY_PASSWORD` are your Bluesky account details. This is used to interact with the Bluesky API to fetch account details. We recommend using your email for `BSKY_USERNAME`, so that it won't break if you change your handle, and an App Password for `BSKY_PASSWORD`.
-
 Once that's done, deploy the app
 
 ### 3. Set up the domain
