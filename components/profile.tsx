@@ -2,6 +2,7 @@
 import { AppBskyActorDefs } from "@atproto/api"
 
 import { cn } from "@/lib/utils"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 interface Props {
   profile: AppBskyActorDefs.ProfileView
@@ -16,6 +17,10 @@ export function Profile({ profile, className }: Props) {
         className="h-12 w-12 rounded-full"
         alt="profile picture"
       />
+      <Avatar>
+        <AvatarImage src={profile.avatar} alt={`${profile.handle}'s avatar`} />
+        <AvatarFallback>{profile.handle.toLocaleUpperCase().at(0)}</AvatarFallback>
+      </Avatar>
       <div className="flex flex-col">
         <p className="text-lg font-semibold leading-5">{profile.displayName}</p>
         <p className="text-sm text-muted-foreground">@{profile.handle}</p>

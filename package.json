@@ -18,6 +18,7 @@
   "dependencies": {
     "@atproto/api": "^0.12.2",
     "@prisma/client": "5.12.1",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
