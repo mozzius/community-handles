@@ -13,11 +13,6 @@ interface Props {
 export function Profile({ profile, className }: Props) {
   return (
     <div className={cn("flex items-center space-x-4", className)}>
-      <img
-        src={profile.avatar}
-        className="h-12 w-12 rounded-full"
-        alt="profile picture"
-      />
       <Avatar>
         <AvatarImage src={profile.avatar} alt={`${profile.handle}'s avatar`} />
         <AvatarFallback>
