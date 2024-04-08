@@ -39,5 +39,5 @@ BskyAgent.configure({
 })
 
 export const agent = new BskyAgent({
-  service: "https://api.bsky.app",
+  service: "https://public.api.bsky.app",
 })
