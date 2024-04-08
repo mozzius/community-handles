@@ -46,9 +46,7 @@ export default function CommunityPage() {
           </p>
         </Stage>
         <Stage title="Host the Community Handles tool" number={2} last>
-          <p className="max-w-lg">
-            You then need to host the tool.
-          </p>
+          <p className="max-w-lg">You then need to host the tool.</p>
           <p className="mt-4 max-w-lg">
             If you want to host it yourself,{" "}
             <a

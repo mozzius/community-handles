@@ -1,5 +1,5 @@
+import { type Metadata, type Viewport } from "next"
 import { Analytics } from "@vercel/analytics/react"
-import { type Metadata,type  Viewport } from "next"
 
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
