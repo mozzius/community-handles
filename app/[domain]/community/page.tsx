@@ -89,7 +89,7 @@ export default async function CommunityPage({ params }: Props) {
             </div>
           </TabsContent>
           <TabsContent value="all">
-            <div className="mt-6 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+            <div className="mt-6 grid w-full grid-cols-1 gap-6 overflow-hidden sm:grid-cols-2 md:grid-cols-3">
               {members.map((member) => (
                 <a
                   href={`https://bsky.app/profile/${member.handle}`}
