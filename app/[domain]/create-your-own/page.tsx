@@ -57,7 +57,7 @@ export default function CommunityPage() {
             </a>
             . It{"'"}s a Next.js project, so you can deploy it however you like.
             Check out the README for the recommended solution, using Vercel and
-            Vercel KV.
+            Railway.
           </p>
           <p className="mt-8 max-w-lg text-sm text-muted-foreground">
             Using the hosted version? (no longer available){" "}

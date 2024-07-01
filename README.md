@@ -24,7 +24,7 @@ You will need to own a domain you want to use, and have a Vercel account linked 
 
 ### 1. Fork this repository
 
-Fork this repository to your own GitHub account.
+Fork this repository to your own GitHub account, and clone it to your local machine.
 
 ### 2. Add the project to Vercel
 
@@ -44,14 +44,13 @@ You'll then want to add a wildcard domain using a `*`, such as `*.bsky.london`. 
 
 ### 4. Add your database
 
-You'll need to add a database to store the community handles. We recommend using [Neon](https://neon.tech), but you can use whatever you want - if it's not Postgres, you'll likely need to modify the Prisma file. Vercel Postgres will likely be the simply way to set it up. You'll need to add the connection strings to the environment variables.
+You'll need to add a database to store the community handles. We recommend using [Railway](https://railway.app), but you can use whatever you want - if it's not Postgres, you'll likely need to modify the Prisma file. Railway will likely be the simply way to set it up.
+
+Create a Postgres database via Railway, then get the connection string once it's ready. You'll need to add the connection strings to the environment variables. Create a file called `.env` in the root of the project, and add the following:
 
 ```env
 DATABASE_URL=
-DIRECT_URL=
 ```
-
-> If your database provider does not give you a direct URL, you can remove it from the `schema.prisma` file.
 
 Then run the following commands in your terminal, in the project directory:
 
@@ -59,6 +58,8 @@ Then run the following commands in your terminal, in the project directory:
 pnpm i
 pnpm prisma db push
 ```
+
+Then, in Vercel, go to Settings > Environment Variables and add the `DATABASE_URL` variable with the connection string. Re-deploy the Vercel app.
 
 ### 5. Done!
 
