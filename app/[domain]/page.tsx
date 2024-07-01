@@ -134,13 +134,13 @@ export default async function IndexPage({
               </p>
               {error1 && (
                 <p className="flex flex-row items-center gap-2 text-sm text-red-500">
-                  <X className="h-4 w-4" /> Handle not found - please try again
+                  <X className="size-4" /> Handle not found - please try again
                 </p>
               )}
               {profile && (
                 <>
                   <p className="text-muted-forground mt-4 flex flex-row items-center gap-2 text-sm">
-                    <Check className="h-4 w-4 text-green-500" /> Account found
+                    <Check className="size-4 text-green-500" /> Account found
                   </p>
                   <Profile profile={profile} className="mt-4" />
                 </>

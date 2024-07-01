@@ -28,7 +28,7 @@ export function SiteHeader({ children }: Props) {
             variant: "ghost",
           })}
         >
-          <Icons.gitHub className="h-5 w-5" />
+          <Icons.gitHub className="size-5" />
           <span className="sr-only">GitHub</span>
         </div>
       </Link>
