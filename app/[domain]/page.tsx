@@ -68,6 +68,11 @@ export default async function IndexPage({
             if (hasExplicitSlur(handle)) {
               throw new Error("slur")
             }
+
+            if (domain === "army.social" && RESERVED.includes(handle)) {
+              throw new Error("reserved")
+            }
+
             const existing = await prisma.user.findFirst({
               where: { handle },
               include: { domain: true },
@@ -161,7 +166,7 @@ export default async function IndexPage({
                 />
                 <Button type="submit">Submit</Button>
               </div>
-              <p className="text-sm text-muted-foreground ">
+              <p className="text-sm text-muted-foreground">
                 Enter the {domain} handle that you would like to have, not
                 including the @
               </p>
@@ -174,6 +179,8 @@ export default async function IndexPage({
                       case "invalid handle":
                       case "slur":
                         return "Invalid handle - please enter a different handle"
+                      case "reserved":
+                        return "Reserved handle - please enter a different handle"
                       default:
                         return "An error occured - please try again"
                     }
@@ -207,3 +214,41 @@ export default async function IndexPage({
     </main>
   )
 }
+
+const RESERVED = [
+  "Jungkook",
+  "JeonJungkook",
+  "Jeon",
+  "JK",
+  "JJK",
+  "Kim",
+  "KimTaehyung",
+  "V",
+  "Taehyung",
+  "Tae",
+  "Jin",
+  "Seokjin",
+  "KimSeokjin",
+  "RM",
+  "Namjoon",
+  "Nam",
+  "KimNamjoon",
+  "MinYoongi",
+  "Yoongi",
+  "Yoon",
+  "AgustD",
+  "MYG",
+  "Suga",
+  "PJM",
+  "Jimin",
+  "ParkJimin",
+  "Park",
+  "Abcdefghi__lmnopqrsvuxyz",
+  "JM",
+  "UarMyHope",
+  "Rkrive",
+  "THV",
+  "KTH",
+  "SBT",
+  "BANGPD",
+].map((x) => x.toLowerCase())
