@@ -93,7 +93,10 @@ export async function getUsers(domain: string, offset = 0) {
   // fetch profiles in chunks of 25
   const chunks = []
   for (let i = 0; i < PAGE_SIZE; i += 25) {
-    chunks.push(users.slice(i, i + 25).map(({ did }) => did))
+    const chunk = users.slice(i, i + 25).map(({ did }) => did)
+    if (chunk.length > 0) {
+      chunks.push(chunk)
+    }
   }
 
   // jealous of postfix await :(

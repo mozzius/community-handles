@@ -2,6 +2,8 @@
 
 import * as React from "react"
 
+import { cn } from "@/lib/utils"
+
 import { Button } from "./ui/button"
 
 interface Props {
@@ -85,7 +87,7 @@ export function LoadMore({
         {loadMoreNodes}
       </div>
       <Button
-        className="mx-auto mt-8"
+        className={cn("mx-auto mt-8", disabled && "invisible")}
         variant="outline"
         size="lg"
         ref={ref}
