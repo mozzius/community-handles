@@ -50,7 +50,7 @@ export default async function CommunityPage({ params }: Props) {
 
         <LoadMore
           domain={domain}
-          className="mt-8 grid w-full grid-cols-1 gap-6 overflow-hidden sm:grid-cols-2 md:grid-cols-3"
+          className="mt-8 grid w-full grid-cols-1 gap-4 overflow-hidden sm:grid-cols-2 md:grid-cols-3"
           loadMoreAction={loadMoreUsers}
           initialOffset={nextOffset}
         >
