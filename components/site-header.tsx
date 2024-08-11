@@ -60,7 +60,7 @@ export function SiteHeader({ children }: Props) {
       </header>
       <div
         className={cn(
-          "absolute top-16 z-30 w-full border-b bg-background transition-transform duration-1000 md:hidden",
+          "fixed top-16 z-30 w-full overflow-hidden border-b bg-background/80 transition-transform duration-500 md:hidden",
           showMenu ? "translate-y-1px" : "-translate-y-full"
         )}
         aria-hidden={!showMenu}
@@ -88,6 +88,15 @@ export function SiteHeader({ children }: Props) {
           {links}
         </div>
       </div>
+      {/* Backdrop */}
+      <div
+        aria-hidden
+        className={cn(
+          "fixed inset-0 z-20 transition-all duration-700 md:hidden",
+          showMenu && "backdrop-blur-md"
+        )}
+        onClick={() => setShowMenu(false)}
+      />
     </>
   )
 }
