@@ -92,8 +92,8 @@ export function SiteHeader({ children }: Props) {
       <div
         aria-hidden
         className={cn(
-          "fixed inset-0 z-20 transition-all duration-700 md:hidden",
-          showMenu && "backdrop-blur-md"
+          "fixed inset-0 z-20 transition-all duration-700 md:pointer-events-none md:hidden",
+          showMenu ? "backdrop-blur-md" : "pointer-events-none"
         )}
         onClick={() => setShowMenu(false)}
       />
