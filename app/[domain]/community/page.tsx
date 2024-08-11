@@ -73,7 +73,7 @@ function ProfileListSection({
   ))
 }
 
-export async function getUsers(domain: string, offset = 0) {
+async function getUsers(domain: string, offset = 0) {
   const users = await prisma.user.findMany({
     where: { domain: { name: domain } },
     select: { did: true },
