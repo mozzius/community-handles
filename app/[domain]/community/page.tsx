@@ -25,7 +25,7 @@ const PAGE_SIZE = 100
 export default async function CommunityPage({ params }: Props) {
   const domain = params.domain
 
-  const [count, { profiles: initialProfiles }] = await Promise.all([
+  const [count, { profiles: initialProfiles, nextOffset }] = await Promise.all([
     prisma.user.count({
       where: { domain: { name: domain } },
     }),
@@ -52,7 +52,7 @@ export default async function CommunityPage({ params }: Props) {
           domain={domain}
           className="mt-8 grid w-full grid-cols-1 gap-6 overflow-hidden sm:grid-cols-2 md:grid-cols-3"
           loadMoreAction={loadMoreUsers}
-          initialOffset={PAGE_SIZE}
+          initialOffset={nextOffset}
         >
           <ProfileListSection profiles={initialProfiles} />
         </LoadMore>

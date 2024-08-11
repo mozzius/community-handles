@@ -9,7 +9,7 @@ import { Button } from "./ui/button"
 interface Props {
   children: React.ReactNode
   domain: string
-  initialOffset: number
+  initialOffset: number | null
   loadMoreAction: (
     domain: string,
     offset: number
@@ -29,13 +29,16 @@ export function LoadMore({
     React.ReactElement[]
   >([])
 
-  const [disabled, setDisabled] = React.useState(false)
+  const [disabled, setDisabled] = React.useState(initialOffset === null)
   const currentOffsetRef = React.useRef<number | null>(initialOffset)
   const [loading, setLoading] = React.useState(false)
 
   const loadMore = React.useCallback(
     async (abortController?: AbortController) => {
-      if (currentOffsetRef.current === null) return
+      if (currentOffsetRef.current === null) {
+        setDisabled(true)
+        return
+      }
 
       setLoading(true)
 
