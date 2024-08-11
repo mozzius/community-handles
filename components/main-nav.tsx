@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 
 import { NavItem } from "@/types/nav"
@@ -11,9 +13,13 @@ interface MainNavProps {
 }
 
 export function MainNav({ title, items }: MainNavProps) {
+  const base = typeof window !== "undefined" ? window.location.host : ""
+  const isLocalhost = base.includes("localhost")
+  const prefix = isLocalhost ? "/swifties.social" : ""
+
   return (
     <div className="flex gap-6 lg:gap-10">
-      <Link href="/" className="flex items-center space-x-2">
+      <Link href={prefix + "/"} className="flex items-center space-x-2">
         <Icons.logo className="size-6" />
         <span className="inline-block font-bold">{title}</span>
       </Link>
@@ -24,7 +30,7 @@ export function MainNav({ title, items }: MainNavProps) {
               item.href && (
                 <Link
                   key={index}
-                  href={item.href}
+                  href={prefix + item.href}
                   className={cn(
                     "flex items-center text-lg font-semibold text-muted-foreground sm:text-sm",
                     item.disabled && "cursor-not-allowed opacity-80"
