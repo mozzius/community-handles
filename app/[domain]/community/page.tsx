@@ -3,7 +3,6 @@ import { AppBskyActorDefs } from "@atproto/api"
 
 import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Link } from "@/components/link"
 import { LoadMore } from "@/components/load-more"
 import { Profile } from "@/components/profile"
