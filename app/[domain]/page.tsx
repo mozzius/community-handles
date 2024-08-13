@@ -251,4 +251,12 @@ const RESERVED = [
   "KTH",
   "SBT",
   "BANGPD",
+  "projeto",
+  "army",
+  "armys ",
+  "info",
+  "projects",
+  "Pic",
+  "New",
+  "Babys",
 ].map((x) => x.toLowerCase())
