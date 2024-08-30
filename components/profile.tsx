@@ -15,7 +15,7 @@ export function Profile({ profile, className }: Props) {
   return (
     <div
       className={cn(
-        "flex flex-col overflow-hidden rounded-xl shadow",
+        "flex w-full max-w-lg flex-col overflow-hidden rounded-xl shadow",
         className
       )}
     >
