@@ -20,12 +20,10 @@ export function Profile({ profile, className }: Props) {
       )}
     >
       {profile.banner ? (
-        <Image
+        <img
           src={profile.banner}
           alt=""
           className="aspect-[3/1] w-full bg-muted object-cover"
-          width={3000}
-          height={1000}
         />
       ) : (
         <div className="aspect-[3/1] w-full bg-muted" />
