@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-const PAGE_SIZE = 100
+const PAGE_SIZE = 30
 
 export default async function CommunityPage({ params }: Props) {
   const domain = params.domain
