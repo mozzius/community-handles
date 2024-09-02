@@ -1,6 +1,5 @@
 import { type Metadata, type Viewport } from "next"
 import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
@@ -34,7 +33,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <html lang="pt" suppressHydrationWarning>
         <head>
           <Analytics />
-          <SpeedInsights />
         </head>
         <body
           className={cn(
