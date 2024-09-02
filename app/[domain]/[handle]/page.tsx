@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   })
   if (!user) {
     return {
-      title: "Profile not found",
+      title: "Perfil não encontrado",
       description: ":(",
     }
   }
@@ -51,7 +51,7 @@ export default async function HandlePage({ params }: Props) {
     console.error(e)
     return (
       <div className="grid flex-1 place-items-center">
-        <p className="text-center">Profile not found</p>
+        <p className="text-center">Perfil não encontrado</p>
       </div>
     )
   }
