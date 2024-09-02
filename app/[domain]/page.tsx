@@ -65,9 +65,10 @@ export default async function IndexPage({
         if (validHandle) {
           try {
             const handle = newHandle.replace(`.${domain}`, "")
-            if (hasExplicitSlur(handle)) {
-              throw new Error("slur")
-            }
+            // some users without intentional insults were blocked from creating a user
+            // if (hasExplicitSlur(handle)) {
+            //   throw new Error("slur")
+            // }
 
             if (domain === "army.social" && RESERVED.includes(handle)) {
               throw new Error("reserved")
