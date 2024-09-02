@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react"
 
 import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
-import { hasExplicitSlur } from "@/lib/slurs"
+// import { hasExplicitSlur } from "@/lib/slurs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Profile } from "@/components/profile"
@@ -130,7 +130,7 @@ export default async function IndexPage({
                 <Input
                   type="text"
                   name="handle"
-                  placeholder="nayeon.bsky.social"
+                  placeholder="user.bsky.social"
                   defaultValue={handle}
                   required
                 />
@@ -164,7 +164,7 @@ export default async function IndexPage({
                 <Input
                   type="text"
                   name="new-handle"
-                  placeholder={`nayeon.${domain}`}
+                  placeholder={`user.${domain}`}
                   defaultValue={newHandle}
                 />
                 <Button type="submit">Enviar</Button>
@@ -208,7 +208,7 @@ export default async function IndexPage({
           <p className="mt-6 max-w-lg text-sm">
             Se você gostou deste projeto(template), considere{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              apoiar meu trabalho
+              apoiar @mozzius
             </a>
             .
           </p>

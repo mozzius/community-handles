@@ -16,7 +16,7 @@ export default function CommunityPage() {
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
           Quer um identificador personalizado para sua comunidade, como
-          @alex.bsky.london, @jay.twice.social ou @jane.bsky.paris? Siga estes
+          @nayeon.twice.social ou @lisa.blackpink.social? Siga estes
           passos para obter o seu.
         </p>
       </div>
