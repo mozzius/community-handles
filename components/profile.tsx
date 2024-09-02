@@ -21,6 +21,7 @@ export function Profile({ profile, className }: Props) {
     >
       {profile.banner ? (
         <Image
+          unoptimized
           src={profile.banner}
           alt=""
           className="aspect-[3/1] w-full bg-muted object-cover"

@@ -26,6 +26,7 @@ export function Avatar({
     >
       {src && (
         <Image
+          unoptimized
           className="aspect-square size-full"
           src={src.replace("avatar", "avatar_thumbnail")}
           alt={alt}
