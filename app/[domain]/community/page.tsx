@@ -40,9 +40,9 @@ export default async function CommunityPage({ params }: Props) {
         </h1>
         <p className="max-w-[500px] text-lg text-muted-foreground sm:text-xl">
           Quer se juntar aos {count} membros da comunidade {domain}? Obtenha seu
-          próprio{" "}
+          próprio usuário{" "}
           <Link href="/" className="underline">
-            {domain} usuário
+            {domain}
           </Link>
           .
         </p>
