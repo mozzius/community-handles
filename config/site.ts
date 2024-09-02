@@ -11,7 +11,7 @@ export const siteConfig = {
       href: "/community",
     },
     {
-      title: "Crie seu próprio usuário da comunidade",
+      title: "Crie seu próprio indentificador da comunidade",
       href: "/create-your-own",
     },
   ],

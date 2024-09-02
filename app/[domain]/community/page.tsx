@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const domain = params.domain
 
   return {
-    title: `A ${domain} Comunidade`,
+    title: `A Comunidade ${domain}`,
     description: `Veja todos os membros da comunidade ${domain}.`,
   }
 }
@@ -36,8 +36,7 @@ export default async function CommunityPage({ params }: Props) {
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          A {domain} <br className="hidden sm:inline" />
-          comunidade
+          A comunidade {domain} <br className="hidden sm:inline" />
         </h1>
         <p className="max-w-[500px] text-lg text-muted-foreground sm:text-xl">
           Quer se juntar aos {count} membros da comunidade {domain}? Obtenha seu
