@@ -206,9 +206,9 @@ export default async function IndexPage({
             &quot;Verificar registro DNS&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
-            Se você gostou deste projeto(template), considere{" "}
+            Se você gostou deste projeto(template), considere apoiar{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              apoiar @mozzius
+              @mozzius
             </a>
             .
           </p>
