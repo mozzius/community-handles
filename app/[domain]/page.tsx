@@ -12,8 +12,8 @@ import { Stage } from "@/components/stage"
 export function generateMetadata({ params }: { params: { domain: string } }) {
   const domain = params.domain
   return {
-    title: `${domain} - get your community handle for Bluesky`,
-    description: `get your own ${domain} handle`,
+    title: `${domain} - obtenha seu usuário de comunidade para Bluesky`,
+    description: `obtenha seu próprio usuário ${domain}`,
   }
 }
 
@@ -110,15 +110,16 @@ export default async function IndexPage({
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Get your own {domain} <br className="hidden sm:inline" />
-          handle for Bluesky
+          Obtenha seu próprio usuário {domain}{" "}
+          <br className="hidden sm:inline" />
+          para Bluesky
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Follow the instructions below to get your own {domain} handle
+          Siga as instruções abaixo para obter seu próprio usuário {domain}
         </p>
       </div>
       <div>
-        <Stage title="Enter your current handle" number={1}>
+        <Stage title="Insira seu usuário atual" number={1}>
           <form>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <div className="flex w-full max-w-sm items-center space-x-2">
@@ -128,24 +129,25 @@ export default async function IndexPage({
                 <Input
                   type="text"
                   name="handle"
-                  placeholder="example.bsky.social"
+                  placeholder="nayeon.bsky.social"
                   defaultValue={handle}
                   required
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Enviar</Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                Enter your current handle, not including the @
+                Insira seu usuário atual, sem incluir o @
               </p>
               {error1 && (
                 <p className="flex flex-row items-center gap-2 text-sm text-red-500">
-                  <X className="size-4" /> Handle not found - please try again
+                  <X className="size-4" /> usuário não encontrado - por favor,
+                  tente novamente
                 </p>
               )}
               {profile && (
                 <>
                   <p className="text-muted-forground mt-4 flex flex-row items-center gap-2 text-sm">
-                    <Check className="size-4 text-green-500" /> Account found
+                    <Check className="size-4 text-green-500" /> Conta encontrada
                   </p>
                   <Profile profile={profile} className="mt-4" />
                 </>
@@ -153,7 +155,7 @@ export default async function IndexPage({
             </div>
           </form>
         </Stage>
-        <Stage title="Choose your new handle" number={2} disabled={!profile}>
+        <Stage title="Escolha seu novo usuário" number={2} disabled={!profile}>
           <form>
             <input type="hidden" name="handle" value={handle} />
             <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -161,28 +163,28 @@ export default async function IndexPage({
                 <Input
                   type="text"
                   name="new-handle"
-                  placeholder={`example.${domain}`}
+                  placeholder={`nayeon.${domain}`}
                   defaultValue={newHandle}
                 />
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Enviar</Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                Enter the {domain} handle that you would like to have, not
-                including the @
+                Insira o usuário {domain} que você gostaria de ter, sem incluir
+                o @
               </p>
               {error2 && (
                 <p className="text-sm text-red-500">
                   {(() => {
                     switch (error2) {
                       case "handle taken":
-                        return "Handle already taken - please enter a different handle"
+                        return "usuário já em uso - por favor, insira um usuário diferente"
                       case "invalid handle":
                       case "slur":
-                        return "Invalid handle - please enter a different handle"
+                        return "usuário inválido - por favor, insira um usuário diferente"
                       case "reserved":
-                        return "Reserved handle - please enter a different handle"
+                        return "usuário reservado - por favor, insira um usuário diferente"
                       default:
-                        return "An error occured - please try again"
+                        return "Ocorreu um erro - por favor, tente novamente"
                     }
                   })()}
                 </p>
@@ -191,21 +193,21 @@ export default async function IndexPage({
           </form>
         </Stage>
         <Stage
-          title="Change your handle within the Bluesky app"
+          title="Altere seu usuário no aplicativo Bluesky"
           number={3}
           disabled={!newHandle || !!error2}
           last
         >
           <p className="max-w-lg text-sm">
-            Go to Settings {">"} Advanced {">"} Change my handle. Select &quot;I
-            have my own domain&quot; and enter{" "}
-            {newHandle ? `"${newHandle}"` : "your new handle"}. Finally, tap
-            &quot;Verify DNS Record&quot;.
+            Vá em Configurações {">"} Avançado {">"} Alterar Usuário. Selecione
+            &quot;Eu tenho meu próprio domínio&quot; e insira{" "}
+            {newHandle ? `"${newHandle}"` : "seu novo usuário"}. Por fim, toque
+            &quot;Verificar registro DNS&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
-            If you like this project, consider{" "}
+            Se você gostou deste projeto, considere{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              sponsoring my work
+              apoiar meu trabalho
             </a>
             .
           </p>
@@ -215,48 +217,4 @@ export default async function IndexPage({
   )
 }
 
-const RESERVED = [
-  "Jungkook",
-  "JeonJungkook",
-  "Jeon",
-  "JK",
-  "JJK",
-  "Kim",
-  "KimTaehyung",
-  "V",
-  "Taehyung",
-  "Tae",
-  "Jin",
-  "Seokjin",
-  "KimSeokjin",
-  "RM",
-  "Namjoon",
-  "Nam",
-  "KimNamjoon",
-  "MinYoongi",
-  "Yoongi",
-  "Yoon",
-  "AgustD",
-  "MYG",
-  "Suga",
-  "PJM",
-  "Jimin",
-  "ParkJimin",
-  "Park",
-  "Abcdefghi__lmnopqrsvuxyz",
-  "JM",
-  "UarMyHope",
-  "Rkrive",
-  "THV",
-  "KTH",
-  "SBT",
-  "BANGPD",
-  "projeto",
-  "army",
-  "armys ",
-  "info",
-  "projects",
-  "Pic",
-  "New",
-  "Babys",
-].map((x) => x.toLowerCase())
+const RESERVED = ["tales", "taleslol"].map((x) => x.toLowerCase())

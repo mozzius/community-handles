@@ -96,7 +96,7 @@ export function LoadMore({
         disabled={disabled || loading}
         onClick={() => loadMore()}
       >
-        {loading ? "Loading..." : "Load More"}
+        {loading ? "Carregando..." : "Carregar mais"}
       </Button>
     </>
   )
