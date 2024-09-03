@@ -27,7 +27,7 @@ export default async function CommunityPage({ params }: Props) {
 
   const [count, { profiles: initialProfiles, nextOffset }] = await Promise.all([
     prisma.user.groupBy({
-      by: ['user.did'],
+      by: ['did'],
       where: { domain: { name: domain } },
       _count: {
         _all: true,
