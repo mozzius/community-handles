@@ -31,9 +31,6 @@ export default async function CommunityPage({ params }: Props) {
       where: { domain: { name: domain } },
       _count: {
         _all: true,
-      },
-      select: {
-        id: true,
       }
     }),
     getUsers(domain),
