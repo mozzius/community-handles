@@ -25,13 +25,16 @@ const PAGE_SIZE = 30
 export default async function CommunityPage({ params }: Props) {
   const domain = params.domain
 
-  const [count, { profiles: initialProfiles, nextOffset }] = await Promise.all([
+  const [users, { profiles: initialProfiles, nextOffset }] = await Promise.all([
     prisma.user.groupBy({
       by: ['did'],
       where: { domain: { name: domain } },
       _count: {
         _all: true,
       },
+      select: {
+        id: true,
+      }
     }),
     getUsers(domain),
   ])
@@ -43,7 +46,7 @@ export default async function CommunityPage({ params }: Props) {
           A comunidade {domain} <br className="hidden sm:inline" />
         </h1>
         <p className="max-w-[500px] text-lg text-muted-foreground sm:text-xl">
-          Quer se juntar aos {count} membros da comunidade {domain}? Obtenha seu
+          Quer se juntar aos {users.length} membros da comunidade {domain}? Obtenha seu
           próprio usuário{" "}
           <Link href="/" className="underline">
             {domain}
