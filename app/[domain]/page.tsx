@@ -206,16 +206,23 @@ export default async function IndexPage({
             &quot;Verificar registro DNS&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
-            Se você gostou deste projeto(template), considere apoiar{" "}
-            <a href="https://github.com/sponsors/mozzius" className="underline">
-              @mozzius
+            Se você gostou deste projeto, considere me {" "}
+            <a href="https://livepix.gg/5eiat" className="underline">
+              apoiar
             </a>
             .
           </p>
-          <p className="mt-1 max-w-lg text-sm">
+          <p className="mt-1 max-w-lg text-xs">
             Tradução e host por{" "}
             <a href="https://bsky.app/profile/nayeon.twice.social" className="underline">
               @nayeon.twice.social
+            </a>
+            .
+          </p>
+          <p className="mt-1 max-w-lg text-xs">
+            Template por{" "}
+            <a href="https://github.com/sponsors/mozzius" className="underline">
+              @mozzius
             </a>
             .
           </p>
