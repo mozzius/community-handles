@@ -2,19 +2,19 @@
 
 Get your own community handle for Bluesky!
 
-Go to https://bsky.london to join the bsky.london community.
+Go to https://swifties.social to join the swifties.social community.
 
 ## What is a community handle?
 
-A domain that other people can have their own subdomain on. For example, [@mozzius.bsky.london](https://mozzius.bsky.london) is a community handle that is part of the https://bsky.london community.
+A domain that other people can have their own subdomain on. For example, [@mozzius.swifties.social](https://mozzius.swifties.social) is a community handle that is part of the https://swifties.social community.
 
 ## How do I get a community handle?
 
-This tool lets members of your community easily get a community handle. Simply go to the domain, such as https://bsky.london, and follow the instructions.
+This tool lets members of your community easily get a community handle. Simply go to the domain, such as https://swifties.social, and follow the instructions.
 
 ## How do I host my own community handle tool?
 
-If you want to set up your own community handle for your own community, you can use this tool. It's free and open source, and you can host it yourself. If it's a bit too technical for you, you can [use our hosted version](https://bsky.london/get-your-own).
+If you want to set up your own community handle for your own community, you can use this tool. It's free and open source, and you can host it yourself. If it's a bit too technical for you, you can [use our hosted version](https://swifties.social/get-your-own).
 
 Otherwise, follow these instructions for the easiest way to set up your own community handle tool.
 
@@ -40,7 +40,7 @@ Once it's done, go to Settings > Domains and add the domain you want to use. **D
 
 > IMPORTANT: Make sure you use nameservers, not DNS records. If you use DNS records, it won't work.
 
-You'll then want to add a wildcard domain using a `*`, such as `*.bsky.london`. This catches all the requests to subdomains - we use Next.js middleware to route them to the right place.
+You'll then want to add a wildcard domain using a `*`, such as `*.swifties.social`. This catches all the requests to subdomains - we use Next.js middleware to route them to the right place.
 
 ### 4. Add your database
 
