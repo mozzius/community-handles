@@ -7,6 +7,8 @@ import { Link } from "@/components/link"
 import { LoadMore } from "@/components/load-more"
 import { Profile } from "@/components/profile"
 
+export const revalidate = 3600
+
 interface Props {
   params: { domain: string }
 }
