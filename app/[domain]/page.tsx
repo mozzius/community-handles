@@ -169,7 +169,9 @@ export default async function IndexPage({
               </div>
               <p className="text-sm text-muted-foreground">
                 Enter the {domain} handle that you would like to have, not
-                including the @. Must end with .fellas.social
+                including the @. Must end with .fellas.social<br/>
+                <br/>
+                {newHandle ? (<span style={{ color: "green" }}>{newHandle} has been successfully created</span>) : ""}
               </p>
               {error2 && (
                 <p className="text-sm text-red-500">
