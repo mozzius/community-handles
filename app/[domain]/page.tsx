@@ -110,7 +110,7 @@ export default async function IndexPage({
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Welcome fellas!
+          Welcome fellas! <br>
           Get your own {domain} <br className="hidden sm:inline" />
           handle for Bluesky
         </h1>
@@ -199,11 +199,11 @@ export default async function IndexPage({
         >
           <p className="max-w-lg text-sm">
             Once you have submitted your chosen handle above, it will be created
-            and you can now change it in the Bluesky app
-            Go to Settings {">"} Advanced {">"} Change my handle. Select &quot;I
-            have my own domain&quot; and enter{" "}
-            {newHandle ? `"${newHandle}"` : "your new handle"}. 
-            Leave the setting on DNS Panel and ignore the text box, everything is done automatically. 
+            and you can now change it in the Bluesky app.<br>
+            Go to Settings {">"} Advanced {">"} Change my handle.<br> 
+            Select &quot;I have my own domain&quot; and enter{" "}
+            {newHandle ? `"${newHandle}"` : "your new handle"}.<br>
+            Leave the setting on {"DNS Panel"} and ignore the text box as it is all done automatically.<br>
             Finally, tap &quot;Verify DNS Record&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
