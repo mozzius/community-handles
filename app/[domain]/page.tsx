@@ -12,8 +12,8 @@ import { Stage } from "@/components/stage"
 export function generateMetadata({ params }: { params: { domain: string } }) {
   const domain = params.domain
   return {
-    title: `${domain} - get your community handle for Bluesky`,
-    description: `get your own ${domain} handle`,
+    title: `${domain} Bluesky Handle`,
+    description: `get your own ${domain} handle for Bluesky`,
   }
 }
 
@@ -110,11 +110,12 @@ export default async function IndexPage({
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+          Welcome fellas!
           Get your own {domain} <br className="hidden sm:inline" />
           handle for Bluesky
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Follow the instructions below to get your own {domain} handle
+          Follow the instructions below to get your new handle
         </p>
       </div>
       <div>
@@ -135,7 +136,7 @@ export default async function IndexPage({
                 <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                Enter your current handle, not including the @
+                Enter your current Bluesky handle, not including the @
               </p>
               {error1 && (
                 <p className="flex flex-row items-center gap-2 text-sm text-red-500">
@@ -168,7 +169,7 @@ export default async function IndexPage({
               </div>
               <p className="text-sm text-muted-foreground">
                 Enter the {domain} handle that you would like to have, not
-                including the @
+                including the @. Must end with .fellas.social
               </p>
               {error2 && (
                 <p className="text-sm text-red-500">
@@ -197,15 +198,19 @@ export default async function IndexPage({
           last
         >
           <p className="max-w-lg text-sm">
+            Once you've submitted your chosen handle above, it will be created
+            and you can now change it in the Bluesky app
             Go to Settings {">"} Advanced {">"} Change my handle. Select &quot;I
             have my own domain&quot; and enter{" "}
-            {newHandle ? `"${newHandle}"` : "your new handle"}. Finally, tap
-            &quot;Verify DNS Record&quot;.
+            {newHandle ? `"${newHandle}"` : "your new handle"}. 
+            Leave the setting on DNS Panel and ignore the text box, everything is done automatically. 
+            Finally, tap &quot;Verify DNS Record&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
-            If you like this project, consider{" "}
+            This project was initially created by mozzius, and adapted by ChrisRid for the NAFO fellas.
+            If you like mozzius project, consider{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              sponsoring my work
+              sponsoring their work
             </a>
             .
           </p>
