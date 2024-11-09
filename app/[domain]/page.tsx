@@ -198,7 +198,7 @@ export default async function IndexPage({
           last
         >
           <p className="max-w-lg text-sm">
-            Once you've submitted your chosen handle above, it will be created
+            Once you have submitted your chosen handle above, it will be created
             and you can now change it in the Bluesky app
             Go to Settings {">"} Advanced {">"} Change my handle. Select &quot;I
             have my own domain&quot; and enter{" "}
@@ -210,7 +210,8 @@ export default async function IndexPage({
             This project was initially created by mozzius, and adapted by ChrisRid for the NAFO fellas.
             If you like mozzius project, consider{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              sponsoring their work
+              sponsoring their work. They have also provided a guide on how you can
+              create your own version of this for your community, shown in the top tab.
             </a>
             .
           </p>
