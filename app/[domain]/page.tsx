@@ -203,7 +203,7 @@ export default async function IndexPage({
             Go to Settings {">"} Advanced {">"} Change my handle.<br> 
             Select &quot;I have my own domain&quot; and enter{" "}
             {newHandle ? `"${newHandle}"` : "your new handle"}.<br>
-            Leave the setting on {"DNS Panel"} and ignore the text box as it is all done automatically.<br>
+            Leave the setting on DNS Panel and ignore the text box as this is all set up automatically.<br>
             Finally, tap &quot;Verify DNS Record&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
