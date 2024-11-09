@@ -207,11 +207,10 @@ export default async function IndexPage({
             Finally, tap &quot;Verify DNS Record&quot;.
           </p>
           <p className="mt-6 max-w-lg text-sm">
-            This project was initially created by mozzius, and adapted by ChrisRid for the NAFO fellas.
+            This project was initially created by mozzius, and adapted by ChrisRid for the NAFO fellas.<br>
             If you like mozzius project, consider{" "}
             <a href="https://github.com/sponsors/mozzius" className="underline">
-              sponsoring their work. They have also provided a guide on how you can
-              create your own version of this for your community, shown in the top tab.
+              sponsoring their work.
             </a>
             .
           </p>
