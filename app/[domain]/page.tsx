@@ -136,7 +136,8 @@ export default async function IndexPage({
                 <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                Enter your current Bluesky handle, not including the @
+                Enter your current Bluesky handle, not including the @<br/>
+                Please note that your handle is case-sensitive
               </p>
               {error1 && (
                 <p className="flex flex-row items-center gap-2 text-sm text-red-500">
