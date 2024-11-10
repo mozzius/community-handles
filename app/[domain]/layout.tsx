@@ -15,6 +15,7 @@ export default function DomainLayout({ children, params }: Props) {
       <NextPlausible
         domain={params.domain}
         customDomain={process.env.PLAUSIBLE_CUSTOM_DOMAIN}
+        trackOutboundLinks
         selfHosted
       />
       <SiteHeader items={siteConfig.mainNav}>
