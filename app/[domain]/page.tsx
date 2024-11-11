@@ -238,7 +238,18 @@ export default async function IndexPage({
             official website and help support them.
           </p>
           <div className="py-4">
-            <Image src={ImageNAFO} width={512} height={400} alt="NAFO image" />
+            <a
+              href="https://nafo-ofan.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={ImageNAFO}
+                width={512}
+                height={400}
+                alt="NAFO image"
+              />
+            </a>
           </div>
           <div className="max-w-lg text-center">
             <p className="text-sm">
@@ -257,14 +268,18 @@ export default async function IndexPage({
               (Please prioritize supporting Ukrainian charities / NAFO first)
             </p>
             <div className="py-4">
-              <div className="inline-block bg-white p-2">
+              <a
+                target="_blank"
+                href="https://buymeacoffee.com/chrisrid"
+                className="inline-block bg-white p-2"
+              >
                 <Image
                   src={ImageCoffeQR}
                   width={300}
                   height={300}
-                  alt="CoffeQR image"
+                  alt="CoffeQR"
                 />
-              </div>
+              </a>
             </div>
             <p>
               The community-handles project was originally created by mozzius,
