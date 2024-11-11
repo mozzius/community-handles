@@ -1,4 +1,6 @@
 import Image from "next/image"
+import ImageCoffeQR from "@/assets/images/CoffeQR.png"
+import ImageNAFO from "@/assets/images/NAFO.png"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check, X } from "lucide-react"
 
@@ -228,12 +230,7 @@ export default async function IndexPage({
             official website and help support them.
           </p>
           <div className="py-4">
-            <Image
-              src="/images/NAFO.png"
-              width={512}
-              height={400}
-              alt="NAFO image"
-            />
+            <Image src={ImageNAFO} width={512} height={400} alt="NAFO image" />
           </div>
           <div className="max-w-lg text-center">
             <p className="text-sm">
@@ -254,7 +251,7 @@ export default async function IndexPage({
             <div className="py-4">
               <div className="inline-block bg-white p-2">
                 <Image
-                  src="/images/CoffeQR.png"
+                  src={ImageCoffeQR}
                   width={300}
                   height={300}
                   alt="CoffeQR image"
