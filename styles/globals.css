@@ -76,6 +76,18 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  .ff-collapse-description {
+    max-height: 0;
+    height: 100%;
+    padding-bottom: 10x;
+  }
+  .active .ff-collapse-description {
+    max-height: 200px;
+    padding-bottom: 15px;
   }
 }
