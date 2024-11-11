@@ -234,7 +234,7 @@ export default async function IndexPage({
         </Stage>
         <div className="max-w-lg text-sm">
           <p className="mt-2 max-w-lg text-sm">
-            This Service is made for the NAFO fellas on Bluesky Visit there
+            This Service is made for the NAFO fellas on Bluesky Visit their
             official website and help support them.
           </p>
           <div className="py-4">
@@ -254,7 +254,7 @@ export default async function IndexPage({
               </a>
             </p>
             <p>
-              (Please prioritize supoorting Ukrainan charities / NAFO first)
+              (Please prioritize supporting Ukrainian charities / NAFO first)
             </p>
             <div className="py-4">
               <div className="inline-block bg-white p-2">
@@ -268,7 +268,7 @@ export default async function IndexPage({
             </div>
             <p>
               The community-handles project was originally created by mozzius,
-              and adapted and hosted by ChrisRid for the NAEF fellas.
+              and adapted and hosted by ChrisRid for the NAFO fellas.
             </p>
             <p>Ongoing maintenance and updates are by ChrisRid and Orion.</p>
             <p>
