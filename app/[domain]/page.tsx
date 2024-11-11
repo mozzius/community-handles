@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check, X } from "lucide-react"
 
@@ -110,7 +111,7 @@ export default async function IndexPage({
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Welcome fellas! <br/>
+          Welcome fellas! <br />
           Get your own {domain} <br className="hidden sm:inline" />
           handle for Bluesky
         </h1>
@@ -136,7 +137,7 @@ export default async function IndexPage({
                 <Button type="submit">Submit</Button>
               </div>
               <p className="text-sm text-muted-foreground">
-                Enter your current Bluesky handle, not including the @<br/>
+                Enter your current Bluesky handle, not including the @<br />
                 Please note that your handle is case-sensitive
               </p>
               {error1 && (
@@ -170,9 +171,16 @@ export default async function IndexPage({
               </div>
               <p className="text-sm text-muted-foreground">
                 Enter the {domain} handle that you would like to have, not
-                including the @. Must end with .fellas.social<br/>
-                <br/>
-                {newHandle ? (<span style={{ color: "green" }}>{newHandle} has been successfully created</span>) : ""}
+                including the @. Must end with .fellas.social
+                <br />
+                <br />
+                {newHandle ? (
+                  <span style={{ color: "green" }}>
+                    {newHandle} has been successfully created
+                  </span>
+                ) : (
+                  ""
+                )}
               </p>
               {error2 && (
                 <p className="text-sm text-red-500">
@@ -202,22 +210,73 @@ export default async function IndexPage({
         >
           <p className="max-w-lg text-sm">
             Once you have submitted your chosen handle above, it will be created
-            and you can now change it in the Bluesky app.<br/>
-            Go to Settings {">"} Advanced {">"} Change my handle.<br/> 
+            and you can now change it in the Bluesky app.
+            <br />
+            Go to Settings {">"} Advanced {">"} Change my handle.
+            <br />
             Select &quot;I have my own domain&quot; and enter{" "}
-            {newHandle ? `"${newHandle}"` : "your new handle"}.<br/>
-            Leave the setting on DNS Panel and ignore the text box as this is all set up automatically.<br/>
+            {newHandle ? `"${newHandle}"` : "your new handle"}.<br />
+            Leave the setting on DNS Panel and ignore the text box as this is
+            all set up automatically.
+            <br />
             Finally, tap &quot;Verify DNS Record&quot;.
           </p>
-          <p className="mt-6 max-w-lg text-sm">
-            This project was initially created by mozzius, and adapted by ChrisRid for the NAFO fellas.<br/>
-            If you like mozzius project, consider{" "}
-            <a href="https://github.com/sponsors/mozzius" className="underline">
-              sponsoring their work.
-            </a>
-            .
-          </p>
         </Stage>
+        <div className="max-w-lg text-sm">
+          <p className="mt-6 max-w-lg text-sm">
+            This Service is made for the NAFO fellas on Bluesky Visit there
+            official website and help support them.
+          </p>
+          <div className="py-4">
+            <Image
+              src="/images/NAFO.png"
+              width={512}
+              height={400}
+              alt="NAFO image"
+            />
+          </div>
+          <div className="max-w-lg text-center">
+            <p className="text-sm">
+              To help support the hosting costs for this service:
+            </p>
+            <p className="py-2 text-center">
+              <a
+                href="https://buymeacoffee.com/chrisrid"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                buymeacoffee.com/chrisrid
+              </a>
+            </p>
+            <p>
+              (Please prioritize supoorting Ukrainan charities / NAFO first)
+            </p>
+            <div className="py-4">
+              <div className="inline-block bg-white p-2">
+                <Image
+                  src="/images/CoffeQR.png"
+                  width={300}
+                  height={300}
+                  alt="CoffeQR image"
+                />
+              </div>
+            </div>
+            <p>
+              The community-handles project was originally created by mozzius,
+              and adapted and hosted by ChrisRid for the NAEF fellas.
+            </p>
+            <p>Ongoing maintenance and updates are by ChrisRid and Orion.</p>
+            <p>
+              To support mozzius with the original project, you can sponsor and
+              view his work at:
+            </p>
+            <p>
+              <a href="https://github.com/sponsors/mozzius" target="_blank">
+                https://github.com/sponsors/mozzius
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   )
