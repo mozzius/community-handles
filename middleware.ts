@@ -6,6 +6,7 @@ export function middleware(request: NextRequest) {
   const url = new URL(request.url)
 
   const { domain, subdomain } = getDomain(url.hostname)
+  console.log("domain=? ", domain, "subdomain=> ", subdomain)
 
   if (domain) {
     if (subdomain && subdomain !== process.env.LANDING_SUBDOMAIN) {
