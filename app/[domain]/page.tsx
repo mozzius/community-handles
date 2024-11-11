@@ -210,22 +210,30 @@ export default async function IndexPage({
           disabled={!newHandle || !!error2}
           last
         >
-          <p className="max-w-lg text-sm">
+          <div className="max-w-lg text-sm">
             Once you have submitted your chosen handle above, it will be created
-            and you can now change it in the Bluesky app.
+            and you can now change it in the Bluesky app:
             <br />
-            Go to Settings {">"} Advanced {">"} Change my handle.
-            <br />
-            Select &quot;I have my own domain&quot; and enter{" "}
-            {newHandle ? `"${newHandle}"` : "your new handle"}.<br />
-            Leave the setting on DNS Panel and ignore the text box as this is
-            all set up automatically.
-            <br />
-            Finally, tap &quot;Verify DNS Record&quot;.
-          </p>
+            <div className="pl-4 pt-2">
+              <ol className="list-decimal">
+                <li>
+                  Go to Settings {">"} Advanced {">"} Change my handle.
+                </li>
+                <li>
+                  Select &quot;I have my own domain&quot; and enter{" "}
+                  {newHandle ? `"${newHandle}"` : "your new handle"}.<br />
+                </li>
+                <li>
+                  Leave the setting on DNS Panel and ignore the text box as this
+                  is all set up automatically.
+                </li>
+                <li>Finally, tap &quot;Verify DNS Record&quot;.</li>
+              </ol>
+            </div>
+          </div>
         </Stage>
         <div className="max-w-lg text-sm">
-          <p className="mt-6 max-w-lg text-sm">
+          <p className="mt-2 max-w-lg text-sm">
             This Service is made for the NAFO fellas on Bluesky Visit there
             official website and help support them.
           </p>
