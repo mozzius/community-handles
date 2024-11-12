@@ -7,8 +7,8 @@ export const siteConfig = {
       href: "/",
     },
     {
-      title: "Members",
-      href: "/community",
+      title: "Fellas",
+      href: "/handle",
     },
     {
       title: "FAQ",
@@ -16,6 +16,6 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/mozzius/community-handles",
+    github: "https://github.com/ChrisRid/community-handles",
   },
 }

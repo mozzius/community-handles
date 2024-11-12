@@ -15,7 +15,7 @@ interface MainNavProps {
 export function MainNav({ title, items }: MainNavProps) {
   const base = typeof window !== "undefined" ? window.location.host : ""
   const isLocalhost = base.includes("localhost")
-  const prefix = isLocalhost ? "/swifties.social" : ""
+  const prefix = isLocalhost ? "/testing.fellas.social" : ""
 
   return (
     <div className="flex gap-6 lg:gap-10">
