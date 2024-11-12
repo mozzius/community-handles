@@ -1,72 +1,34 @@
-# Bluesky Community Handles tool
+# The fellas.social Handles for Bluesky Service
 
-Get your own community handle for Bluesky!
-
-Go to https://swifties.social to join the swifties.social community.
+A service which allows the NAFO Fellas to create their own [name].fellas.social handle for Bluesky.
+Go to [https://fellas.social](https://fellas.social) to get your own!
 
 ## What is a community handle?
 
-A domain that other people can have their own subdomain on. For example, [@mozzius.swifties.social](https://mozzius.swifties.social) is a community handle that is part of the https://swifties.social community.
+When you see posts in Bluesky, you'll notice that their 'handle' is normally [name].bsky.social. Most people keep this default handle, however you can change it to something else if you own a domain.
 
-## How do I get a community handle?
+For example, if you owned a domain called [fellas.social](https:fellas.social), then you could set your handle as @fellas.social. However if you wanted more than one handle based on the same domain then you could create multiple sub-domains which might look like [@chrisrid.fellas.social](https://chrisrid.fellas.social), replacing the first username for each person in your community.
 
-This tool lets members of your community easily get a community handle. Simply go to the domain, such as https://swifties.social, and follow the instructions.
+While doing this manually is an option for small numbers of people, it doesn't scale well with larger communities. That's where this service comes in, by automatically creating and allocating sub-domains through the website for people to use as handles.
 
-## How do I host my own community handle tool?
+## How do I get a fellas.social handle?
 
-If you want to set up your own community handle for your own community, you can use this tool. It's free and open source, and you can host it yourself. If it's a bit too technical for you, you can [use our hosted version](https://swifties.social/get-your-own).
+It's easy for fellas to get their own handle, simply go to [https://fellas.social](https://fellas.social) and follow the instructions.
 
-Otherwise, follow these instructions for the easiest way to set up your own community handle tool.
+## How can I contribute to this project?
 
-> These instructions assume you have a basic understanding of Git, GitHub, and Vercel. It not the only way to host it (it's just a Next.js app) but it is probably the simplest way.
+If you're a fella who's great with web development and/or cyber-security, then reach out to [@chrisrid.fellas.social](https://chrisrid.fellas.social) on Bluesky. You can also help by suggesting ideas and improvements by reaching out in the same way - every fellas input is welcomed!
 
-You will need to own a domain you want to use, and have a Vercel account linked to your GitHub.
+To help support the hosting costs of fellas.social, go to [buymeacoffee.com/ChrisRid](buymeacoffee.com/ChrisRid), but please prioritise supporting NAFO and Ukrainian charities first.
 
-### 1. Fork this repository
+To sponsor mozzius - the original author of the community-handles project which this is based on, go to [sponsor me](https://github.com/sponsors/mozzius)](https://github.com/sponsors/mozzius)
 
-Fork this repository to your own GitHub account, and clone it to your local machine.
+## How can I set something like this up for my own community?
 
-### 2. Add the project to Vercel
+This project is based on mozzius' [community-handles project](https://github.com/mozzius/community-handles) which is free and open source. It includes a comprehensive guide to help you set up your own.
 
-Add the project to Vercel using the "Add New..." button. You will need to link your GitHub account to Vercel if you haven't already.
+While this project originally contained his full guide, it's likely that this fork will stray over time from his as updates are introduced here. So to ensure you have the most up-to-date information and guidance, follow his guide and fork from his original project:
 
-It will detect that it's a Next.js project and set up the build settings for you. That's all fine, but you will need to set up the environment variables.
+[[community-handles project](https://github.com/mozzius/community-handles)](https://github.com/mozzius/community-handles)
 
-Once that's done, deploy the app
 
-### 3. Set up the domain
-
-Once it's done, go to Settings > Domains and add the domain you want to use. **Don't do the redirect stuff it recommends, just use the plain domain. It's the third option on the list**. It'll give you the nameservers your need to point the domain to - go back to your registrar and do that.
-
-> IMPORTANT: Make sure you use nameservers, not DNS records. If you use DNS records, it won't work.
-
-You'll then want to add a wildcard domain using a `*`, such as `*.swifties.social`. This catches all the requests to subdomains - we use Next.js middleware to route them to the right place.
-
-### 4. Add your database
-
-You'll need to add a database to store the community handles. We recommend using [Railway](https://railway.app), but you can use whatever you want - if it's not Postgres, you'll likely need to modify the Prisma file. Railway will likely be the simply way to set it up.
-
-Create a Postgres database via Railway, then get the connection string once it's ready. You'll need to add the connection strings to the environment variables. Create a file called `.env` in the root of the project, and add the following:
-
-```env
-DATABASE_URL=
-```
-
-Then run the following commands in your terminal, in the project directory:
-
-```bash
-pnpm i
-pnpm prisma db push
-```
-
-Then, in Vercel, go to Settings > Environment Variables and add the `DATABASE_URL` variable with the connection string. Re-deploy the Vercel app.
-
-### 5. Done!
-
-That's it! You should now be able to go to your domain and use the community handle tool.
-
-> Remember it takes a few minutes for DNS to propagate, so it might not work straight away.
-
-If you have any problems, mention me on Bluesky ([@samuel.bsky.team](https://bsky.app/profile/samuel.bsky.team)) or DM me on Twitter ([@mozzius](https://twitter.com/mozzius)) and I'll try to help.
-
-If you like the project, you can [sponsor me](https://github.com/sponsors/mozzius)! It's not required, but it's appreciated :)
