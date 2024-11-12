@@ -29,7 +29,8 @@ export const config = {
      * 2. /_next (Next.js internals)
      * 3. all root files inside /public (e.g. /favicon.ico)
      * 4. opengraph images (e.g. /[a-z0-9-_.]/[a-z0-9-_]/opengraph-image)
+     * 5. Plausible analytics script
      */
-    "/((?!api/|_next/|_static/|[\\w-]+\\.\\w+|[a-zA-Z0-9-_.]+/[a-zA-Z0-9-_]+/opengraph-image).*)",
+    "/((?!api/|_next/|_static/|js/|proxy/|[\\w-]+\\.\\w+|[a-zA-Z0-9-_.]+/[a-zA-Z0-9-_]+/opengraph-image).*)",
   ],
 }

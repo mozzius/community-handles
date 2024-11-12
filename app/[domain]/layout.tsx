@@ -1,3 +1,5 @@
+
+import NextPlausible from "next-plausible"
 import { siteConfig } from "@/config/site"
 import { MainNav } from "@/components/main-nav"
 import { SiteHeader } from "@/components/site-header"
@@ -10,6 +12,12 @@ interface Props {
 export default function DomainLayout({ children, params }: Props) {
   return (
     <>
+      <NextPlausible
+        domain={params.domain}
+        customDomain={process.env.PLAUSIBLE_CUSTOM_DOMAIN}
+        trackOutboundLinks
+        selfHosted
+      />
       <SiteHeader items={siteConfig.mainNav}>
         <MainNav title={params.domain} items={siteConfig.mainNav} />
       </SiteHeader>
