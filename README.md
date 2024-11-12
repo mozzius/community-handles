@@ -21,7 +21,7 @@ If you're a fella who's great with web development and/or cyber-security, then r
 
 To help support the hosting costs of fellas.social, go to [buymeacoffee.com/ChrisRid](buymeacoffee.com/ChrisRid), but please prioritise supporting NAFO and Ukrainian charities first.
 
-To sponsor mozzius - the original author of the community-handles project which this is based on, go to [sponsor me](https://github.com/sponsors/mozzius)](https://github.com/sponsors/mozzius)
+To sponsor mozzius - the original author of the community-handles project which this is based on, go to [https://github.com/sponsors/mozzius](https://github.com/sponsors/mozzius)
 
 ## How can I set something like this up for my own community?
 
@@ -29,6 +29,6 @@ This project is based on mozzius' [community-handles project](https://github.com
 
 While this project originally contained his full guide, it's likely that this fork will stray over time from his as updates are introduced here. So to ensure you have the most up-to-date information and guidance, follow his guide and fork from his original project:
 
-[[community-handles project](https://github.com/mozzius/community-handles)](https://github.com/mozzius/community-handles)
+[https://github.com/mozzius/community-handles](https://github.com/mozzius/community-handles)
 
 
