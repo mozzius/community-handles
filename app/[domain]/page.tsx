@@ -286,7 +286,7 @@ export default async function IndexPage({
               </a>
             </div>
             <p>
-              Want a different NAFO related handle? Check out 
+              Want a different NAFO related handle? Check out&nbsp;
               <a href="https://mainbastards.online/" target="_blank">
                 MainBastards.online
               </a>
