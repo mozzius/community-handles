@@ -14,6 +14,10 @@ export const siteConfig = {
       title: "FAQ",
       href: "/faq",
     },
+    {
+      title: "Other Related Handles",
+      href: "/otherhandles",
+    },
   ],
   links: {
     github: "https://github.com/ChrisRid/community-handles",

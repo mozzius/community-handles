@@ -1,9 +1,5 @@
-import { LoaderIcon } from "lucide-react"
+import Loading from "@/components/loading"
 
-export default function Loading() {
-  return (
-    <div className="flex flex-1 items-center justify-center">
-      <LoaderIcon className="size-8 animate-spin text-primary" />
-    </div>
-  )
+export default function LoadingPage() {
+  return <Loading />
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { FC, PropsWithChildren, useState } from "react"
+import { FC, PropsWithChildren, useEffect, useMemo, useState } from "react"
 import {
   useParams,
   usePathname,
@@ -9,27 +9,29 @@ import {
 } from "next/navigation"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check } from "lucide-react"
-import {
-  GoogleReCaptchaProvider,
-  useGoogleReCaptcha,
-} from "react-google-recaptcha-v3"
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 import { RESERVED } from "@/lib/constant"
 import { hasExplicitSlur } from "@/lib/slurs"
 
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
+import Loading from "../../loading"
+import { Button } from "../../ui/button"
+import { Input } from "../../ui/input"
 
 export type ButtonProps = PropsWithChildren<{
-  handle?: string
   profile?: AppBskyActorDefs.ProfileView
+  onUpdated?: (v: string) => void
 }>
 
-const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
+const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
   const params = useParams()
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const handle = useMemo(
+    () => profile?.handle?.replace(".bsky.social", ""),
+    [profile]
+  )
 
   const { executeRecaptcha } = useGoogleReCaptcha()
 
@@ -39,6 +41,7 @@ const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
   )
   const [error, setError] = useState("")
   const [created, setCreated] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const domain = params.domain
 
@@ -57,11 +60,11 @@ const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
           if (domain === "army.social" && RESERVED.includes(newHandleText)) {
             throw new Error("reserved")
           }
-          console.log(newHandleText, "newHandleText")
           setNewHandle(newHandleText)
           setError("")
           setCreated(false)
           // Recaptcha token
+          setLoading(true)
           const token = await executeRecaptcha()
 
           const res = await fetch("/api/handle", {
@@ -81,26 +84,37 @@ const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
           } else {
             if (success) {
               setCreated(true)
-              router.replace(
-                `${pathname}/?handle=${handle}&new-handle=${newHandle}`
-              )
+              if (onUpdated) {
+                onUpdated(newHandleText)
+              }
+              // router.replace(
+              //   `${pathname}/?handle=${handle}&new-handle=${newHandle}`
+              // )
             }
           }
+          setLoading(false)
         } catch (e) {
           console.error(e)
           setError((e as Error)?.message ?? "unknown error")
+          setLoading(false)
         }
       } else {
         setError("invalid handle")
       }
     }
   }
+  useEffect(() => {
+    if (!profile) {
+      setNewHandle("")
+      setCreated(false)
+    } else {
+    }
+  }, [profile])
 
   return (
     <form onSubmit={handleFormSubmit}>
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <div className="flex w-full max-w-sm items-center space-x-2">
-          <input type="hidden" name="handle" value={handle} />
           <Input
             type="text"
             name="new-handle"
@@ -109,15 +123,20 @@ const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
             onChange={(e) => setNewHandle(e.target.value)}
             suffix={`.${domain}`}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={loading}>
+            Submit
+          </Button>
         </div>
 
         <p className="text-sm text-muted-foreground">
           Enter a new {domain} handle, not including the @<br />
-          Can only contain letters, numbers, and hyphens.<br />
-          Handles must end with .fellas.social<br />
+          Can only contain letters, numbers, and hyphens.
+          <br />
+          Handles must end with .fellas.social
+          <br />
           <br />
         </p>
+        {loading && <Loading />}
         {error ? (
           <p className="text-sm text-red-500">
             {(() => {
@@ -150,14 +169,5 @@ const CreateNewHandleMain: FC<ButtonProps> = ({ handle, profile }) => {
     </form>
   )
 }
-const CreateNewHandle: FC<ButtonProps> = (props) => {
-  return (
-    <GoogleReCaptchaProvider
-      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-    >
-      <CreateNewHandleMain {...props} />
-    </GoogleReCaptchaProvider>
-  )
-}
 
-export default CreateNewHandle
+export default Step2

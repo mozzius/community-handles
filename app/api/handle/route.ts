@@ -1,24 +1,11 @@
 import { NextResponse } from "next/server"
 
 import { prisma } from "@/lib/db"
+import { verifyReCaptcha } from "@/lib/service"
 
-export async function POST(req) {
+export async function POST(req: Request) {
   const { token, handle, did, domain } = await req.json()
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY
-
-  const response = await fetch(
-    `https://www.google.com/recaptcha/api/siteverify`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `secret=${secretKey}&response=${token}`,
-    }
-  )
-
-  const data = await response.json()
-  let success = data.success && data.score > 0.5
+  let success = await verifyReCaptcha(token)
 
   //   successful recaptcha
   let error = ""

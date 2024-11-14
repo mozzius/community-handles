@@ -24,3 +24,5 @@ export function getDomain(host: string) {
 
   return domain
 }
+
+export const isExternal = (link: string) => /^(https?:\/\/|www\.)/i.test(link)

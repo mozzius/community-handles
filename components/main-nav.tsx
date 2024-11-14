@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { NavItem } from "@/types/nav"
-import { cn } from "@/lib/utils"
+import { cn, isExternal } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Link } from "@/components/link"
 
@@ -30,9 +30,9 @@ export function MainNav({ title, items }: MainNavProps) {
               item.href && (
                 <Link
                   key={index}
-                  href={prefix + item.href}
+                  href={isExternal(item.href) ? item.href : prefix + item.href}
                   className={cn(
-                    "flex items-center text-lg font-semibold text-muted-foreground sm:text-sm",
+                    "flex items-center text-lg font-semibold text-muted-foreground hover:text-black dark:hover:text-white sm:text-sm",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >
