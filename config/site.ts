@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   mainNav: [
     {
-      title: "Join the community",
+      title: "Get your Handle",
       href: "/",
     },
     {

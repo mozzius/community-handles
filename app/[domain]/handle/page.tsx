@@ -41,7 +41,7 @@ export default async function CommunityPage({ params }: Props) {
           Fellas with the {domain} Handle
         </h1>
         <p className="max-w-[500px] text-lg text-muted-foreground sm:text-xl">
-          Want to join the {count} fellas who are using the
+          Want to join the {count} fellas who are using the&nbsp;
           {domain} handle? &nbsp;{" "}
           <Link href="/" className="underline">
             Get your own
