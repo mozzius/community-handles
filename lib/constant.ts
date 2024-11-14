@@ -43,3 +43,5 @@ export const RESERVED = [
   "New",
   "Babys",
 ].map((x) => x.toLowerCase())
+
+export const CREATE_HANDLE_ALLOW_FOLLOWS_MIN = 1

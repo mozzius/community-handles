@@ -3,7 +3,7 @@ export type SiteConfig = typeof siteConfig
 export const siteConfig = {
   mainNav: [
     {
-      title: "Get your Handle",
+      title: "Get Your Handle",
       href: "/",
     },
     {
@@ -15,7 +15,7 @@ export const siteConfig = {
       href: "/faq",
     },
     {
-      title: "Other Related Handles",
+      title: "Other NAFO Related Handles",
       href: "/otherhandles",
     },
   ],
