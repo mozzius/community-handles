@@ -17,9 +17,37 @@ export default function CommunityPage() {
         <Collapse
           items={[
             {
+              title: "What is this handle for and how did it get here?",
+              content: (
+                <div>
+                  This handle is intended for use by the NAFO Fellas. More
+                  information about the fellas can be found on their official
+                  website at{" "}
+                  <a
+                    href="https://nafo-ofan.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    https://nafo-ofan.org
+                  </a>
+                  . The handle came about during the big transition from X to
+                  Bluesky. A unique feature of Bluesky is that people can use
+                  their own domain names as Bluesky handles. Samuel, one of the
+                  Bluesky developers, created a template service allowing
+                  communities to create their own unique handles. The Taylor
+                  Swift fan club was quick to adopt this, creating the
+                  swifties.social handle. A few NAFO fellas noticed and
+                  suggested that the fellas could have their own handle too,
+                  using fellas.social as the domain. A few days later,
+                  fellas.social was born.
+                </div>
+              ),
+            },
+            {
               title: "Will this affect people who follow me?",
               content:
-                "You will keep all the followers you currently have, however you may need to update starter packs that you appear in with your new handle.",
+                "You will keep all your followers when you change your handle. Any posts where you're tagged or mentioned will automatically redirect to your new handle. Just keep in mind, though, that once you change your handle, your old handle becomes available for someone else to claim.",
             },
             {
               title: "Can I change back to my old handle?",
@@ -32,10 +60,14 @@ export default function CommunityPage() {
                   <ol className="list-decimal pl-5">
                     <li>Open the Bluesky App (or webpage on computer)</li>
                     <li>
-                      Go to Settings {">"} Advanced {">"} Change Handle
+                      Go to Settings {">"} Account {">"} Handle
                     </li>
                     <li>Then simply enter the handle you want (old or new)</li>
                   </ol>
+                  <p className="mt-2">
+                    (Note: When you change your handle, your old handle become
+                    available for someone else to use)
+                  </p>
                 </div>
               ),
             },
@@ -105,30 +137,18 @@ export default function CommunityPage() {
               ),
             },
             {
-              title: "What is this handle for and how did it get here?",
+              title:
+                "It's saying I need to be followed by more fellas using this handle?",
               content: (
                 <div>
-                  This handle is intended for use by the NAFO Fellas. More
-                  information about the fellas can be found on their official
-                  website at{" "}
-                  <a
-                    href="https://nafo-ofan.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    https://nafo-ofan.org
-                  </a>
-                  . The handle came about during the big transition from X to
-                  Bluesky. A unique feature of Bluesky is that people can use
-                  their own domain names as Bluesky handles. Samuel, one of the
-                  Bluesky developers, created a template service allowing
-                  communities to create their own unique handles. The Taylor
-                  Swift fan club was quick to adopt this, creating the
-                  swifties.social handle. A few NAFO fellas noticed and
-                  suggested that the fellas could have their own handle too,
-                  using fellas.social as the domain. A few days later,
-                  fellas.social was born.
+                  <p className="">
+                    This is just to help prevent fake accounts from making
+                    handles, thereby preserving it for the rest of us. This
+                    number is kept fairly low to ensure it shouldn&#39;t be a
+                    problem for legitimate fellas. So if you&#39;ve just made an
+                    account, spend some more time mingling with the other fellas
+                    and you should good to go in no time!
+                  </p>
                 </div>
               ),
             },

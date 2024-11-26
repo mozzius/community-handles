@@ -44,7 +44,7 @@ export default async function IndexPage({
         <GetYourHandle />
 
         <div className="max-w-lg text-sm">
-          <p className="mt-2 max-w-lg text-sm">
+          <p className="mt-2 max-w-lg text-center text-sm">
             This Service is made for the NAFO fellas on Bluesky Visit their
             official website and help support them.
           </p>
