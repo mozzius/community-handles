@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@atproto/api':
-        specifier: ^0.12.29
-        version: 0.12.29
+        specifier: ^0.13.18
+        version: 0.13.18
       '@prisma/client':
         specifier: 5.18.0
         version: 5.18.0(prisma@5.18.0)
@@ -152,20 +152,20 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@atproto/api@0.12.29':
-    resolution: {integrity: sha512-PyzPLjGWR0qNOMrmj3Nt3N5NuuANSgOk/33Bu3j+rFjjPrHvk9CI6iQPU6zuDaDCoyOTRJRafw8X/aMQw+ilgw==}
+  '@atproto/api@0.13.18':
+    resolution: {integrity: sha512-rrl5HhzGYWZ7fiC965TPBUOVItq9M4dxMb6qz8IvAVQliSkrJrKc7UD0QWL89QiiXaOBuX8w+4i5r4wrfBGddg==}
 
-  '@atproto/common-web@0.3.0':
-    resolution: {integrity: sha512-67VnV6JJyX+ZWyjV7xFQMypAgDmjVaR9ZCuU/QW+mqlqI7fex2uL4Fv+7/jHadgzhuJHVd6OHOvNn0wR5WZYtA==}
+  '@atproto/common-web@0.3.1':
+    resolution: {integrity: sha512-N7wiTnus5vAr+lT//0y8m/FaHHLJ9LpGuEwkwDAeV3LCiPif4m/FS8x/QOYrx1PdZQwKso95RAPzCGWQBH5j6Q==}
 
-  '@atproto/lexicon@0.4.0':
-    resolution: {integrity: sha512-RvCBKdSI4M8qWm5uTNz1z3R2yIvIhmOsMuleOj8YR6BwRD+QbtUBy3l+xQ7iXf4M5fdfJFxaUNa6Ty0iRwdKqQ==}
+  '@atproto/lexicon@0.4.3':
+    resolution: {integrity: sha512-lFVZXe1S1pJP0dcxvJuHP3r/a+EAIBwwU7jUK+r8iLhIja+ml6NmYv8KeFHmIJATh03spEQ9s02duDmFVdCoXg==}
 
-  '@atproto/syntax@0.3.0':
-    resolution: {integrity: sha512-Weq0ZBxffGHDXHl9U7BQc2BFJi/e23AL+k+i5+D9hUq/bzT4yjGsrCejkjq0xt82xXDjmhhvQSZ0LqxyZ5woxA==}
+  '@atproto/syntax@0.3.1':
+    resolution: {integrity: sha512-fzW0Mg1QUOVCWUD3RgEsDt6d1OZ6DdFmbKcDdbzUfh0t4rhtRAC05KbZYmxuMPWDAiJ4BbbQ5dkAc/mNypMXkw==}
 
-  '@atproto/xrpc@0.5.0':
-    resolution: {integrity: sha512-swu+wyOLvYW4l3n+VAuJbHcPcES+tin2Lsrp8Bw5aIXIICiuFn1YMFlwK9JwVUzTH21Py1s1nHEjr4CJeElJog==}
+  '@atproto/xrpc@0.6.4':
+    resolution: {integrity: sha512-9ZAJ8nsXTqC4XFyS0E1Wlg7bAvonhXQNQ3Ocs1L1LIwFLXvsw/4fNpIHXxvXvqTCVeyHLbImOnE9UiO1c/qIYA==}
 
   '@babel/code-frame@7.24.7':
     resolution: {integrity: sha512-BcYH1CVJBO9tvyIZ2jVeXgSIMvGZ2FDRvDdOIVQyuklNKSsx+eppDEBq/g47Ayw+RqNFE+URvOShmf+f/qwAlA==}
@@ -2701,8 +2701,8 @@ packages:
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
 
-  tlds@1.254.0:
-    resolution: {integrity: sha512-YY4ei7K7gPGifqNSrfMaPdqTqiHcwYKUJ7zhLqQOK2ildlGgti5TSwJiXXN1YqG17I2GYZh5cZqv2r5fwBUM+w==}
+  tlds@1.255.0:
+    resolution: {integrity: sha512-tcwMRIioTcF/FcxLev8MJWxCp+GUALRhFEqbDoZrnowmKSGqPrl5pqS+Sut2m8BgJ6S4FExCSSpGffZ0Tks6Aw==}
     hasBin: true
 
   to-fast-properties@2.0.0:
@@ -2867,36 +2867,37 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@atproto/api@0.12.29':
+  '@atproto/api@0.13.18':
     dependencies:
-      '@atproto/common-web': 0.3.0
-      '@atproto/lexicon': 0.4.0
-      '@atproto/syntax': 0.3.0
-      '@atproto/xrpc': 0.5.0
+      '@atproto/common-web': 0.3.1
+      '@atproto/lexicon': 0.4.3
+      '@atproto/syntax': 0.3.1
+      '@atproto/xrpc': 0.6.4
       await-lock: 2.2.2
       multiformats: 9.9.0
-      tlds: 1.254.0
+      tlds: 1.255.0
+      zod: 3.23.8
 
-  '@atproto/common-web@0.3.0':
+  '@atproto/common-web@0.3.1':
     dependencies:
       graphemer: 1.4.0
       multiformats: 9.9.0
       uint8arrays: 3.0.0
       zod: 3.23.8
 
-  '@atproto/lexicon@0.4.0':
+  '@atproto/lexicon@0.4.3':
     dependencies:
-      '@atproto/common-web': 0.3.0
-      '@atproto/syntax': 0.3.0
+      '@atproto/common-web': 0.3.1
+      '@atproto/syntax': 0.3.1
       iso-datestring-validator: 2.2.2
       multiformats: 9.9.0
       zod: 3.23.8
 
-  '@atproto/syntax@0.3.0': {}
+  '@atproto/syntax@0.3.1': {}
 
-  '@atproto/xrpc@0.5.0':
+  '@atproto/xrpc@0.6.4':
     dependencies:
-      '@atproto/lexicon': 0.4.0
+      '@atproto/lexicon': 0.4.3
       zod: 3.23.8
 
   '@babel/code-frame@7.24.7':
@@ -5545,7 +5546,7 @@ snapshots:
     dependencies:
       any-promise: 1.3.0
 
-  tlds@1.254.0: {}
+  tlds@1.255.0: {}
 
   to-fast-properties@2.0.0: {}
 

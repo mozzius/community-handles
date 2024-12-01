@@ -9,7 +9,7 @@ import { Stage } from "../../stage"
 import Step1 from "./Step1"
 import Step2 from "./Step2"
 
-const GetYourHandle: FC<{ totalUsers: number }> = ({ totalUsers }) => {
+const GetYourHandle: FC = () => {
   const t = useTranslations("Handle")
   const [profile, setProfile] = useState<AppBskyActorDefs.ProfileView>()
   const [newHandle, setNewHandle] = useState("")
@@ -19,7 +19,6 @@ const GetYourHandle: FC<{ totalUsers: number }> = ({ totalUsers }) => {
     >
       <Stage title={t("Enter your current handle")} number={1}>
         <Step1
-          totalUsers={totalUsers}
           onUpdatedProfile={(e) => {
             setProfile(e)
             if (!e) {

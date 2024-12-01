@@ -18,7 +18,7 @@
     "export": "tsx prisma/export.ts"
   },
   "dependencies": {
-    "@atproto/api": "^0.12.29",
+    "@atproto/api": "^0.13.18",
     "@prisma/client": "5.18.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",

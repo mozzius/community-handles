@@ -1,7 +1,7 @@
 "use client"
 
 import { FC, PropsWithChildren, useEffect, useMemo, useState } from "react"
-import { useSearchParams } from "next/navigation"
+import { useParams, useSearchParams } from "next/navigation"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check, X } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -14,25 +14,21 @@ import { Input } from "../../ui/input"
 
 export type ButtonProps = PropsWithChildren<{
   onUpdatedProfile?: (v?: AppBskyActorDefs.ProfileView) => void
-  totalUsers: number
 }>
 
-const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
+const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
   const searchParams = useSearchParams()
+  const params = useParams()
   const tc = useTranslations()
   const t = useTranslations("Step1")
 
   const { executeRecaptcha } = useGoogleReCaptcha()
 
-  const CREATE_HANDLE_ALLOW_FOLLOWS = useMemo(
-    () => Math.min(Math.abs(Math.floor((totalUsers - 1) / 100)), 9),
-    [totalUsers]
-  )
+  //CREATE_HANDLE_ALLOW_FOLLOWS
+  const [limit, setLimit] = useState(0)
 
   const [handle, setHandle] = useState(searchParams.get("handle") || "")
   const [profile, setProfile] = useState<AppBskyActorDefs.ProfileView>()
-  const [followers, setFollowers] = useState(0)
-  const [followersF, setFollowersF] = useState(0)
 
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -42,8 +38,7 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
       try {
         setLoading(true)
         setProfile(undefined)
-        setFollowers(0)
-        setFollowersF(0)
+        setError("")
         if (onUpdatedProfile) {
           onUpdatedProfile(undefined)
         }
@@ -56,6 +51,7 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
           body: JSON.stringify({
             token,
             handle,
+            domain: params.domain,
           }),
         })
         const { success, data } = await res.json()
@@ -63,9 +59,8 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
         if (data.profile) {
           setProfile(data.profile)
         }
-        setFollowers(data?.followers)
-        setFollowersF(data?.followers_fellas)
-        if (data?.followers_fellas < CREATE_HANDLE_ALLOW_FOLLOWS) {
+        setLimit(data?.limit)
+        if (data?.invalid) {
           setError("no_follows")
         } else {
           if (data.profile) {
@@ -99,12 +94,12 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
         return t("Handle not found - please try again")
       case "no_follows":
         return t("You must be followed by at least", {
-          count: CREATE_HANDLE_ALLOW_FOLLOWS,
+          count: limit,
         })
       default:
         return tc("Something is wrong")
     }
-  }, [error, CREATE_HANDLE_ALLOW_FOLLOWS, t, tc])
+  }, [error, limit, t, tc])
 
   return (
     <form onSubmit={handleFormSubmit}>

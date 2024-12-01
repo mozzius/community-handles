@@ -28,9 +28,6 @@ export default async function IndexPage({
 }) {
   const domain = params.domain
 
-  const totalUsers = await prisma.user.count({
-    where: { domain: { name: domain } },
-  })
   const t = await getTranslations("Home")
 
   return (
@@ -49,7 +46,7 @@ export default async function IndexPage({
         </p>
       </div>
       <div>
-        <GetYourHandle totalUsers={totalUsers} />
+        <GetYourHandle />
 
         <div className="max-w-lg text-sm">
           <p className="mt-2 max-w-lg text-center text-sm">
