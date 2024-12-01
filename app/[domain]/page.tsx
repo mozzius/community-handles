@@ -1,10 +1,10 @@
-import { useState } from "react"
 import Image from "next/image"
 import ImageCoffeQR from "@/assets/images/CoffeQR.png"
 import ImageNAFO from "@/assets/images/NAFO.png"
+import { getTranslations } from "next-intl/server"
 
+import { prisma } from "@/lib/db"
 import GetYourHandle from "@/components/page/Home/GetYourHandle"
-import { Stage } from "@/components/stage"
 
 export function generateMetadata({ params }: { params: { domain: string } }) {
   const domain = params.domain
@@ -28,25 +28,32 @@ export default async function IndexPage({
 }) {
   const domain = params.domain
 
+  const totalUsers = await prisma.user.count({
+    where: { domain: { name: domain } },
+  })
+  const t = await getTranslations("Home")
+
   return (
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Welcome fellas! <br />
-          Get your own {domain} <br className="hidden sm:inline" />
-          handle for Bluesky
-        </h1>
+        <div>
+          <div className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            {t("welcome")}
+          </div>
+          <div className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
+            {t("Get your own", { domain })}
+          </div>
+        </div>
         <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-          Follow the instructions below to get your new handle
+          {t("Follow the instructions")}
         </p>
       </div>
       <div>
-        <GetYourHandle />
+        <GetYourHandle totalUsers={totalUsers} />
 
         <div className="max-w-lg text-sm">
           <p className="mt-2 max-w-lg text-center text-sm">
-            This Service is made for the NAFO fellas on Bluesky Visit their
-            official website and help support them.
+            {t("This Service is")}
           </p>
           <div className="py-4">
             <a
@@ -64,7 +71,7 @@ export default async function IndexPage({
           </div>
           <div className="max-w-lg text-center">
             <p className="text-sm">
-              To help support the hosting costs for this service:
+              {t("To help support the hosting costs for this service")}:
             </p>
             <p className="py-2 text-center">
               <a
@@ -75,9 +82,7 @@ export default async function IndexPage({
                 buymeacoffee.com/chrisrid
               </a>
             </p>
-            <p>
-              (Please prioritize supporting Ukrainian charities / NAFO first)
-            </p>
+            <p>({t("Please prioritize")})</p>
             <div className="py-4">
               <a
                 target="_blank"
@@ -93,20 +98,18 @@ export default async function IndexPage({
               </a>
             </div>
             <p>
-              Want a different NAFO related handle? Check out&nbsp;
-              <a href="https://mainbastards.online/" target="_blank">
+              {t("Want a different NAFO related handle")}&nbsp;
+              <a
+                href="https://mainbastards.online/"
+                target="_blank"
+                className="hover:underline"
+              >
                 MainBastards.online
               </a>
             </p>
-            <p>
-              The community-handles project was originally created by mozzius,
-              and adapted and hosted by ChrisRid for the NAFO fellas.
-            </p>
-            <p>Ongoing maintenance and updates are by ChrisRid and Orion.</p>
-            <p>
-              To support mozzius with the original project, you can sponsor and
-              view his work at:
-            </p>
+            <p>{t("The community-handles project")}</p>
+            <p>{t("Ongoing maintenance")}</p>
+            <p>{t("To support")}</p>
             <p>
               <a href="https://github.com/sponsors/mozzius" target="_blank">
                 https://github.com/sponsors/mozzius

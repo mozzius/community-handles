@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   })
   if (!user) {
     return {
-      title: "Profile not found",
+      title: "404",
       description: ":(",
     }
   }
@@ -30,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function HandlePage({ params }: Props) {
+  const t = await getTranslations()
   const { domain, handle } = params
 
   try {
@@ -51,7 +53,7 @@ export default async function HandlePage({ params }: Props) {
     console.error(e)
     return (
       <div className="grid flex-1 place-items-center">
-        <p className="text-center">Profile not found</p>
+        <p className="text-center">{t("Profile not found")}</p>
       </div>
     )
   }

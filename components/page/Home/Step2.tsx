@@ -1,14 +1,10 @@
 "use client"
 
 import { FC, PropsWithChildren, useEffect, useMemo, useState } from "react"
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation"
+import { useParams, useSearchParams } from "next/navigation"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
 import { RESERVED } from "@/lib/constant"
@@ -25,8 +21,8 @@ export type ButtonProps = PropsWithChildren<{
 
 const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
   const params = useParams()
-  const router = useRouter()
-  const pathname = usePathname()
+  const tc = useTranslations()
+  const t = useTranslations("Step2")
   const searchParams = useSearchParams()
   const handle = useMemo(
     () => profile?.handle?.replace(".bsky.social", ""),
@@ -95,7 +91,7 @@ const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
           setLoading(false)
         } catch (e) {
           console.error(e)
-          setError((e as Error)?.message ?? "unknown error")
+          setError((e as Error)?.message ?? tc("unknown error"))
           setLoading(false)
         }
       } else {
@@ -113,26 +109,27 @@ const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="grid w-full max-w-sm items-center gap-1.5">
-        <div className="flex w-full max-w-sm items-center space-x-2">
+      <div className="grid w-full max-w-md items-center gap-1.5">
+        <div className="flex w-full max-w-md items-center space-x-2">
           <Input
             type="text"
             name="new-handle"
-            placeholder={`New handle`}
+            placeholder={t("New handle")}
             value={newHandle}
             onChange={(e) => setNewHandle(e.target.value)}
             suffix={`.${domain}`}
           />
           <Button type="submit" disabled={loading}>
-            Submit
+            {tc("Submit")}
           </Button>
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Enter a new {domain} handle, not including the @<br />
-          Can only contain letters, numbers, and hyphens.
+          {t("Enter a new domain handle, not including the @", {
+            domain: `${domain}`,
+          })}
           <br />
-          Handles must end with .fellas.social
+          {t("Handles must end with")}
           <br />
           <br />
         </p>
@@ -142,14 +139,16 @@ const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
             {(() => {
               switch (error) {
                 case "handle taken":
-                  return "Handle already taken - please enter a different handle"
+                  return t(
+                    "Handle already taken - please enter a different handle"
+                  )
                 case "invalid handle":
                 case "slur":
-                  return "Invalid handle - please enter a different handle"
+                  return t("Invalid handle - please enter a different handle")
                 case "reserved":
-                  return "Reserved handle - please enter a different handle"
+                  return t("Reserved handle - please enter a different handle")
                 default:
-                  return "An error occured - please try again"
+                  return t("An error occurred - please try again")
               }
             })()}
           </p>
@@ -159,7 +158,9 @@ const Step2: FC<ButtonProps> = ({ profile, onUpdated }) => {
               <div className="mt-4 flex flex-row items-center gap-2 text-sm">
                 <Check className="size-6 text-green-500" />
                 <p className="flex-1">
-                  {newHandle}.{domain} has been successfully created
+                  {t("domain been successfully created", {
+                    domain: `${newHandle}.${domain}`,
+                  })}
                 </p>
               </div>
             )}

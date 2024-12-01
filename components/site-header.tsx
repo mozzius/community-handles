@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 import { type NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
@@ -11,16 +12,21 @@ import { Icons } from "@/components/icons"
 import { Link } from "@/components/link"
 import { ThemeToggle } from "@/components/theme-toggle"
 
+import { LangSwitch } from "./lang-switch"
+
 interface Props {
   children?: React.ReactNode
   items?: NavItem[]
+  locale?: string
 }
 
 export function SiteHeader({ children }: Props) {
+  const t = useTranslations("Layout")
   const [showMenu, setShowMenu] = useState(false)
 
   const links = (
     <nav className="flex items-center gap-4 md:gap-1">
+      <LangSwitch />
       <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
         <div
           className={buttonVariants({
@@ -60,7 +66,7 @@ export function SiteHeader({ children }: Props) {
       </header>
       <div
         className={cn(
-          "fixed top-16 z-30 w-full overflow-hidden border-b bg-background/80 transition-transform duration-500 md:hidden",
+          "fixed top-16 z-30 w-full border-b bg-background/80 transition-transform duration-500 md:hidden",
           showMenu ? "translate-y-1px" : "-translate-y-full"
         )}
         aria-hidden={!showMenu}
@@ -80,7 +86,7 @@ export function SiteHeader({ children }: Props) {
                     })}
                     onClick={() => setShowMenu(false)}
                   >
-                    {item.title}
+                    {t(item.title)}
                   </Link>
                 )
             )}

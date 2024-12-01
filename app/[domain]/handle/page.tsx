@@ -1,5 +1,6 @@
 import { type Metadata } from "next"
 import { AppBskyActorDefs } from "@atproto/api"
+import { getTranslations } from "next-intl/server"
 
 import { agent } from "@/lib/atproto"
 import { prisma } from "@/lib/db"
@@ -14,17 +15,19 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const t = await getTranslations("Fellas")
   const domain = params.domain
 
   return {
-    title: `The ${domain} Community`,
-    description: `See all the members of the ${domain} community.`,
+    title: t("meta_title", { domain }),
+    description: t("meta_desc", { domain }),
   }
 }
 
 const PAGE_SIZE = 100
 
 export default async function CommunityPage({ params }: Props) {
+  const t = await getTranslations("Fellas")
   const domain = params.domain
 
   const [count, { profiles: initialProfiles, nextOffset }] = await Promise.all([
@@ -38,13 +41,13 @@ export default async function CommunityPage({ params }: Props) {
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl">
-          Fellas Using the Handle
+          {t("title")}
         </h1>
-        <p className="max-w-[500px] text-lg text-muted-foreground sm:text-xl">
-          Want to join the {count} fellas who are using the&nbsp;
-          {domain} handle? &nbsp;{" "}
+        <p className="max-w-[600px] text-lg text-muted-foreground sm:text-xl">
+          {t("titleSub", { count, domain })}
+          &nbsp;{" "}
           <Link href="/" className="underline">
-            Get your own
+            {t("Get your own")}
           </Link>
         </p>
 

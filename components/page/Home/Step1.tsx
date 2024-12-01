@@ -4,9 +4,8 @@ import { FC, PropsWithChildren, useEffect, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { AppBskyActorDefs } from "@atproto/api"
 import { Check, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
-
-import { CREATE_HANDLE_ALLOW_FOLLOWS_MIN } from "@/lib/constant"
 
 import Loading from "../../loading"
 import { Profile } from "../../profile"
@@ -15,12 +14,20 @@ import { Input } from "../../ui/input"
 
 export type ButtonProps = PropsWithChildren<{
   onUpdatedProfile?: (v?: AppBskyActorDefs.ProfileView) => void
+  totalUsers: number
 }>
 
-const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
+const Step1: FC<ButtonProps> = ({ onUpdatedProfile, totalUsers }) => {
   const searchParams = useSearchParams()
+  const tc = useTranslations()
+  const t = useTranslations("Step1")
 
   const { executeRecaptcha } = useGoogleReCaptcha()
+
+  const CREATE_HANDLE_ALLOW_FOLLOWS = useMemo(
+    () => Math.min(Math.abs(Math.floor((totalUsers - 1) / 100)), 9),
+    [totalUsers]
+  )
 
   const [handle, setHandle] = useState(searchParams.get("handle") || "")
   const [profile, setProfile] = useState<AppBskyActorDefs.ProfileView>()
@@ -58,7 +65,7 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
         }
         setFollowers(data?.followers)
         setFollowersF(data?.followers_fellas)
-        if (data?.followers_fellas < CREATE_HANDLE_ALLOW_FOLLOWS_MIN) {
+        if (data?.followers_fellas < CREATE_HANDLE_ALLOW_FOLLOWS) {
           setError("no_follows")
         } else {
           if (data.profile) {
@@ -89,18 +96,20 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
   const errorMsg = useMemo(() => {
     switch (error) {
       case "404":
-        return "Handle not found - please try again"
+        return t("Handle not found - please try again")
       case "no_follows":
-        return `You must be followed by at least ${CREATE_HANDLE_ALLOW_FOLLOWS_MIN} other fella with a .fellas.social handle before you can create your own`
+        return t("You must be followed by at least", {
+          count: CREATE_HANDLE_ALLOW_FOLLOWS,
+        })
       default:
-        return "Something is wrong"
+        return tc("Something is wrong")
     }
-  }, [error])
+  }, [error, CREATE_HANDLE_ALLOW_FOLLOWS, t, tc])
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <div className="grid w-full max-w-sm items-center gap-1.5">
-        <div className="flex w-full max-w-sm items-center space-x-2">
+      <div className="grid w-full max-w-md items-center gap-1.5">
+        <div className="flex w-full max-w-md items-center space-x-2">
           <Input
             type="text"
             name="handle"
@@ -110,12 +119,13 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
             required
           />
           <Button type="submit" disabled={loading}>
-            Submit
+            {tc("Submit")}
           </Button>
         </div>
         <p className="text-sm text-muted-foreground">
-          Enter your current Bluesky handle, not including the @<br />
-          Please note that your handle is case-sensitive
+          {t("Enter your current Bluesky handle, not including the @")}
+          <br />
+          {t("Please note that your handle is case-sensitive")}
         </p>
         {loading && <Loading />}
         {error && (
@@ -129,7 +139,7 @@ const Step1: FC<ButtonProps> = ({ onUpdatedProfile }) => {
         {profile && (
           <>
             <p className="text-muted-forground mt-4 flex flex-row items-center gap-2 text-sm">
-              <Check className="size-6 text-green-500" /> Account found
+              <Check className="size-6 text-green-500" /> {t("Account found")}
             </p>
             <Profile profile={profile} className="mt-4" />
             {/* <div className="grid grid-cols-2 gap-1">

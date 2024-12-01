@@ -6,6 +6,7 @@ import { NavItem } from "@/types/nav"
 import { cn, isExternal } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import { Link } from "@/components/link"
+import { useTranslations } from "next-intl"
 
 interface MainNavProps {
   title: string
@@ -13,6 +14,8 @@ interface MainNavProps {
 }
 
 export function MainNav({ title, items }: MainNavProps) {
+  const t = useTranslations("Layout")
+
   const base = typeof window !== "undefined" ? window.location.host : ""
   const isLocalhost = base.includes("localhost")
   const prefix = isLocalhost ? "/testing.fellas.social" : ""
@@ -36,7 +39,7 @@ export function MainNav({ title, items }: MainNavProps) {
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                 >
-                  {item.title}
+                  {t(item.title)}
                 </Link>
               )
           )}

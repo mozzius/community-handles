@@ -1,0 +1,85 @@
+{
+  "Layout": {
+    "Get Your Handle": "Get Your Handle",
+    "Other NAFO Related Handles": "Other NAFO Related Handles",
+    "Fellas": "Fellas",
+    "FAQ": "FAQ"
+  },
+  "Home": {
+    "welcome": "Welcome fellas!",
+    "Get your own": "Get your own {domain} handle for Bluesky",
+    "Follow the instructions": "Follow the instructions below to get your new handle",
+    "This Service is": "This Service is made for the NAFO fellas on Bluesky Visit their official website and help support them.",
+    "To help support the hosting costs for this service": "To help support the hosting costs for this service",
+    "Please prioritize": "Please prioritize supporting Ukrainian charities / NAFO first",
+    "Want a different NAFO related handle": "Want a different NAFO related handle? Check out",
+    "The community-handles project": "The community-handles project was originally created by mozzius, and adapted and hosted by ChrisRid for the NAFO fellas.",
+    "Ongoing maintenance": "Ongoing maintenance and updates are by ChrisRid and Orion.",
+    "To support": "To support mozzius with the original project, you can sponsor and view his work at:"
+  },
+  "Handle": {
+    "Enter your current handle": "Enter your current handle",
+    "Choose your new handle": "Choose your new handle",
+    "Change your handle within the Bluesky app": "Change your handle within the Bluesky app",
+    "step1": "Go to Settings > Advanced > Change my handle",
+    "step2": "Select \"I have my own domain\" and enter {handle, select, no {your new handle} other {{handle}}}.",
+    "step3": "Leave the setting on DNS Panel and ignore the text box as this is all set up automatically.",
+    "step4": "Finally, tap \"Verify DNS Record\"",
+    "Once you have submitted": "Once you have submitted your chosen handle above, it will be created and you can now change it in the Bluesky app:"
+  },
+  "Fellas": {
+    "meta_title": "The {domain} Community",
+    "meta_desc": "See all the members of the {domain} community.",
+    "title": "Fellas Using the Handle",
+    "titleSub": "Want to join the {count} fellas who are using the {domain} handle?",
+    "Get your own": "Get your own"
+  },
+  "OtherHandle": {
+    "title": "Other NAFO Related Handles",
+    "titleSub": "Here you can find other handles used by the NAFO fellas."
+  },
+  "Step1": {
+    "Enter your current Bluesky handle, not including the @": "Enter your current Bluesky handle, not including the @",
+    "Please note that your handle is case-sensitive": "Please note that your handle is case-sensitive",
+    "Handle not found - please try again": "Handle not found - please try again",
+    "You must be followed by at least": "You must be followed by at least {count} other fella with a .fellas.social handle before you can create your own",
+    "Account found": "Account found"
+  },
+  "Step2": {
+    "New handle": "New handle",
+    "Enter a new domain handle, not including the @": "Enter a new {domain} handle, not including the @",
+    "Handles must end with": "Handles must end with .fellas.social",
+    "Handle already taken - please enter a different handle": "Handle already taken - please enter a different handle",
+    "Invalid handle - please enter a different handle": "Invalid handle - please enter a different handle",
+    "Reserved handle - please enter a different handle": "Reserved handle - please enter a different handle",
+    "domain been successfully created": "{domain} has been successfully created",
+    "An error occurred - please try again": "An error occurred - please try again"
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "t1": "What is this handle for and how did it get here?",
+    "c10": "This handle is intended for use by the NAFO Fellas. More information about the fellas can be found on their official website at",
+    "c11": "The handle came about during the big transition from X to Bluesky. A unique feature of Bluesky is that people can use their own domain names as Bluesky handles. Samuel, one of the Bluesky developers, created a template service allowing communities to create their own unique handles. The Taylor Swift fan club was quick to adopt this, creating the swifties.social handle. A few NAFO fellas noticed and suggested that the fellas could have their own handle too, using fellas.social as the domain. A few days later, fellas.social was born.",
+    "t2": "Will this affect people who follow me?",
+    "c2": "You will keep all your followers when you change your handle. Any posts where you're tagged or mentioned will automatically redirect to your new handle. Just keep in mind, though, that once you change your handle, your old handle becomes available for someone else to claim.",
+    "t3": "Can I change back to my old handle?",
+    "c30": "Yes, you can change back to your old [name].bsky.social at any time as follows:",
+    "c31": "Open the Bluesky App (or webpage on computer)",
+    "c32": "Go to Settings > Account > Handle",
+    "c33": "Then simply enter the handle you want (old or new)",
+    "c34": "(Note: When you change your handle, your old handle become available for someone else to use)",
+    "t4": "It says \"Handle not found\" when I enter my existing handle in step 1?",
+    "c4": "Please ensure that you have copied your existing handle exactly as it appears, without the @ symbol at the beginning. Remember, handles are case sensitive, so double-check for any uppercase or lowercase differences. If Bluesky servers are experiencing high demand, you may need to wait a moment and try again. For additional help, you can tag @chrisrid.fellas.social on Bluesky.",
+    "t5": "It says \"Invalid Handle\" when I type in my new handle:",
+    "c5": "Your new handle can only contain letters, numbers and hyphens. It should appear in the format: [name].fellas.social and make sure 'fellas' is plural, ie 'fellas.social' not 'fella.social'",
+    "t6": "How do I know this is trustworthy?",
+    "c6": "This project is open-source, to ensure full transparency. You can view the source code and stay up to date with changes at:",
+    "t7": "How can I make my own custom handles for my community on Bluesky?",
+    "c7": "You can. This is based on a project made by mozzius (a Bluesky developer) which is open-source, and he kindly provided plenty of guidance so that others can create their own iterations. Check out his GitHub for more information at:",
+    "t8": "It's saying I need to be followed by more fellas using this handle?",
+    "c8": "This is just to help prevent fake accounts from making handles, thereby preserving it for the rest of us. This number is kept fairly low to ensure it shouldn't be a problem for legitimate fellas. So if you've just made an account, spend some more time mingling with the other fellas and you should good to go in no time!"
+  },
+  "Something is wrong": "Something is wrong",
+  "Profile not found": "Profile not found",
+  "Submit": "Submit"
+}

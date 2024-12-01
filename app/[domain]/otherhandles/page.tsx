@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Image1 from "@/assets/images/handles/mainbastards.png"
+import { getTranslations } from "next-intl/server"
 
 const OTHER_HANDLES = [
   {
@@ -10,19 +11,20 @@ const OTHER_HANDLES = [
 ]
 
 export const metadata = {
-  title: "FAQ",
-  description: "Frequently Asked Questions",
+  title: "Other Handles",
+  description: "NAFO Related Handles",
 }
 
-export default function OtherHandlesPage() {
+export default async function OtherHandlesPage() {
+  const t = await getTranslations("OtherHandle")
   return (
     <main className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="mb-10 flex max-w-[980px] flex-col items-start gap-4">
         <h1 className="text-2xl font-extrabold leading-tight tracking-tighter sm:text-3xl md:text-5xl lg:text-6xl">
-          Other NAFO Related Handles
+          {t("title")}
         </h1>
         <p className="text-lg text-muted-foreground sm:text-xl">
-          Here you can find other handles used by the NAFO fellas.
+          {t("titleSub")}
         </p>
       </div>
       <div className="max-w-5xl">
