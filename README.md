@@ -14,9 +14,7 @@ This tool lets members of your community easily get a community handle. Simply g
 
 ## How do I host my own community handle tool?
 
-If you want to set up your own community handle for your own community, you can use this tool. It's free and open source, and you can host it yourself. If it's a bit too technical for you, you can [use our hosted version](https://swifties.social/get-your-own).
-
-Otherwise, follow these instructions for the easiest way to set up your own community handle tool.
+If you want to set up your own community handle for your own community, you can use this tool. It's free and open source, and you can host it yourself.
 
 > These instructions assume you have a basic understanding of Git, GitHub, and Vercel. It not the only way to host it (it's just a Next.js app) but it is probably the simplest way.
 
@@ -66,7 +64,5 @@ Then, in Vercel, go to Settings > Environment Variables and add the `DATABASE_UR
 That's it! You should now be able to go to your domain and use the community handle tool.
 
 > Remember it takes a few minutes for DNS to propagate, so it might not work straight away.
-
-If you have any problems, mention me on Bluesky ([@samuel.bsky.team](https://bsky.app/profile/samuel.bsky.team)) or DM me on Twitter ([@mozzius](https://twitter.com/mozzius)) and I'll try to help.
 
 If you like the project, you can [sponsor me](https://github.com/sponsors/mozzius)! It's not required, but it's appreciated :)
