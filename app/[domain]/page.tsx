@@ -197,7 +197,7 @@ export default async function IndexPage({
           last
         >
           <p className="max-w-lg text-sm">
-            Go to Settings {">"} Advanced {">"} Change my handle. Select &quot;I
+            Go to Settings {">"} Account {">"} Handle. Select &quot;I
             have my own domain&quot; and enter{" "}
             {newHandle ? `"${newHandle}"` : "your new handle"}. Finally, tap
             &quot;Verify DNS Record&quot;.
