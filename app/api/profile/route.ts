@@ -26,7 +26,7 @@ export async function POST(req: Request) {
     profile = res1.data
     const pages = Math.ceil((res1.data.followersCount || 0) / 100)
     let cursor = ""
-    for (let page = 1; page < pages; page++) {
+    for (let page = 0; page < pages; page++) {
       const res2 = await agent.getFollowers({
         actor,
         limit: 100,
