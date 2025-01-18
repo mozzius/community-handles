@@ -1,5 +1,4 @@
 import Image from "next/image"
-import ImageCoffeQR from "@/assets/images/CoffeQR.png"
 import ImageNAFO from "@/assets/images/NAFO.png"
 import { getTranslations } from "next-intl/server"
 

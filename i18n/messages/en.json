@@ -9,13 +9,7 @@
     "welcome": "Welcome fellas!",
     "Get your own": "Get your own {domain} handle for Bluesky",
     "Follow the instructions": "Follow the instructions below to get your new handle",
-    "This Service is": "This Service is made for the NAFO fellas on Bluesky Visit their official website and help support them.",
-    "To help support the hosting costs for this service": "To help support the hosting costs for this service",
-    "Please prioritize": "Please prioritize supporting Ukrainian charities / NAFO first",
-    "Want a different NAFO related handle": "Want a different NAFO related handle? Check out",
-    "The community-handles project": "The community-handles project was originally created by mozzius, and adapted and hosted by ChrisRid for the NAFO fellas.",
-    "Ongoing maintenance": "Ongoing maintenance and updates are by ChrisRid and Orion.",
-    "To support": "To support mozzius with the original project, you can sponsor and view his work at:"
+    "This Service is": "This Service is made for the NAFO fellas on Bluesky Visit their official website and help support them."
   },
   "Handle": {
     "Enter your current handle": "Enter your current handle",
@@ -42,7 +36,7 @@
     "Enter your current Bluesky handle, not including the @": "Enter your current Bluesky handle, not including the @",
     "Please note that your handle is case-sensitive": "Please note that your handle is case-sensitive",
     "Handle not found - please try again": "Handle not found - please try again",
-    "You must be followed by at least": "You must be followed by at least {count} other fella with a .fellas.social handle before you can create your own",
+    "You must be followed by at least": "You must be followed by at least {count} other fellas with a .fellas.social handle before you can create your own",
     "Account found": "Account found"
   },
   "Step2": {
