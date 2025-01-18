@@ -16,7 +16,7 @@
     "Choose your new handle": "Виберіть нову ручку",
     "Change your handle within the Bluesky app": "Змініть ручку в додатку Bluesky",
     "step1": "Перейдіть до Settings > Advanced > Change my handle",
-    "step2": "Виберіть \"У мене є власний домен\" і введіть {handle, select, no {ваша нова ручка} other {{handle}}}.",
+    "step2": "Виберіть \"У мене є власний домен\" і введіть {handle, select, no {ваша нова ручка} other {{handle}.fellas.social}}.",
     "step3": "Залиште налаштування на панелі DNS і ігноруйте текстове поле, оскільки все це налаштовується автоматично.",
     "step4": "Нарешті натисніть \"Перевірити запис DNS\"",
     "Once you have submitted": "Після того, як ви подасте вибраний маркер вище, він буде створений, і тепер ви зможете змінити його в програмі Bluesky:"

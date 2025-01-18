@@ -16,7 +16,7 @@
     "Choose your new handle": "Choose your new handle",
     "Change your handle within the Bluesky app": "Change your handle within the Bluesky app",
     "step1": "Go to Settings > Advanced > Change my handle",
-    "step2": "Select \"I have my own domain\" and enter {handle, select, no {your new handle} other {{handle}}}.",
+    "step2": "Select \"I have my own domain\" and enter {handle, select, no {your new handle} other {{handle}.fellas.social}}.",
     "step3": "Leave the setting on DNS Panel and ignore the text box as this is all set up automatically.",
     "step4": "Finally, tap \"Verify DNS Record\"",
     "Once you have submitted": "Once you have submitted your chosen handle above, it will be created and you can now change it in the Bluesky app:"
