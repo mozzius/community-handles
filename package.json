@@ -2,7 +2,7 @@
   "name": "next-template",
   "version": "0.0.2",
   "private": true,
-  "packageManager": "pnpm@9.7.0",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,7 +16,6 @@
     "postinstall": "prisma generate",
     "studio": "prisma studio",
     "export": "tsx prisma/export.ts"
-
   },
   "dependencies": {
     "@atproto/api": "^0.12.29",
